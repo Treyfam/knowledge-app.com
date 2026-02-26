@@ -1,241 +1,283 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Knowledge — Clarity over noise</title>
-  <meta name="description" content="Knowledge is a calm, founder-led platform for learning, growth, and healing — built around outcome-based loops, not vanity metrics." />
-  <meta name="theme-color" content="#071321" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Knowledge — Built for the standard.</title>
+  <meta name="description" content="Knowledge — Clarity over noise. A calm, founder-led platform for learning, growth, and healing." />
 
   <style>
     :root{
-      --bg0:#071321;
-      --bg1:#0b1a2c;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.08);
-      --stroke: rgba(255,255,255,.10);
+      --bg:#071321;
+      --panel:#0b1a2c;
+      --panel2:#0e2136;
       --text:#ffffff;
-      --muted: rgba(255,255,255,.72);
-      --muted2: rgba(255,255,255,.55);
-
-      --purple:#8B5CF6;
-      --purple2:#A78BFA;
-
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.55);
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --purple:#8b5cf6;
+      --purple2:#a78bfa;
       --good:#22c55e;
-
-      --shadow: 0 18px 55px rgba(0,0,0,.55);
-      --radius: 18px;
-      --radius2: 22px;
-
-      --max: 1120px;
+      --radius:22px;
     }
 
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue";
       background:
-        radial-gradient(900px 700px at 15% 10%, rgba(139,92,246,.20), transparent 60%),
-        radial-gradient(900px 700px at 90% 30%, rgba(167,139,250,.14), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      min-height: 100svh; /* iOS safe viewport */
+        radial-gradient(800px 500px at 15% 10%, rgba(139,92,246,.18), transparent 60%),
+        radial-gradient(700px 500px at 85% 25%, rgba(167,139,250,.12), transparent 55%),
+        radial-gradient(900px 700px at 50% 110%, rgba(255,255,255,.05), transparent 60%),
+        var(--bg);
+      color:var(--text);
       overflow-x:hidden;
     }
 
-    a{ color:inherit; text-decoration:none; }
-    .wrap{ width:100%; margin:0 auto; padding: 18px; }
-    .container{ max-width: var(--max); margin:0 auto; }
+    a{ color:inherit; }
 
-    /* Top bar */
-    .topbar{
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding: 0 18px 70px;
+    }
+
+    /* ===== Header (Pro / Clean / Mobile-safe) ===== */
+    .header{
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 999;
+      background: rgba(7, 19, 33, .72);
       backdrop-filter: blur(14px);
-      background: linear-gradient(180deg, rgba(7,19,33,.88), rgba(7,19,33,.62));
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .toprow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+
+    .header-inner{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 14px;
-      padding: 14px 0;
     }
+
+    /* brand */
     .brand{
       display:flex;
       align-items:center;
       gap: 12px;
       min-width: 0;
     }
-    .logo{
-      width: 40px; height: 40px;
+    .brand-mark{
+      width: 44px;
+      height: 44px;
       border-radius: 14px;
-      background: linear-gradient(135deg, var(--purple), var(--purple2));
-      display:grid; place-items:center;
-      box-shadow: 0 10px 28px rgba(139,92,246,.25);
+      display:grid;
+      place-items:center;
+      font-weight: 900;
+      letter-spacing:.2px;
+      background: linear-gradient(135deg, rgba(167,139,250,.95), rgba(139,92,246,.95));
+      box-shadow: 0 10px 24px rgba(139,92,246,.22);
       flex: 0 0 auto;
     }
-    .logo span{
-      font-weight: 900;
-      font-size: 18px;
-      letter-spacing: .5px;
-    }
-    .brandtxt{
+    .brand-text{
       display:flex;
       flex-direction:column;
-      line-height: 1.1;
+      line-height: 1.05;
       min-width:0;
     }
-    .brandtxt b{
-      font-size: 15px;
+    .brand-name{
+      font-weight: 800;
       letter-spacing: .2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap;
     }
-    .brandtxt small{
-      color: var(--muted2);
+    .brand-tag{
       font-size: 12px;
-      white-space:nowrap;
-      overflow:hidden;
+      opacity: .72;
+      white-space: nowrap;
+      overflow: hidden;
       text-overflow: ellipsis;
+      max-width: 180px;
     }
 
+    /* nav */
     .nav{
       display:flex;
       align-items:center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content:flex-end;
+      gap: 18px;
+      flex: 1;
+      justify-content: center;
+      min-width: 0;
     }
     .nav a{
-      padding: 10px 12px;
-      border-radius: 12px;
-      color: var(--muted);
-      border: 1px solid transparent;
-      font-size: 13px;
-      letter-spacing: .15px;
+      text-decoration:none;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      white-space: nowrap;
     }
-    .nav a:hover{
-      border-color: rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-    }
-    .nav .cta{
-      color: var(--text);
-      background: linear-gradient(135deg, rgba(139,92,246,.95), rgba(167,139,250,.95));
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 14px 35px rgba(139,92,246,.22);
-    }
-    .nav .cta:hover{ filter: brightness(1.03); }
+    .nav a:hover{ background: rgba(255,255,255,.06); }
 
-    /* Hero */
-    .hero{
-      padding: 56px 0 26px;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 18px;
-      align-items: start;
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-    }
-    .heroCard{ padding: 28px; }
-    h1{
-      margin: 0 0 10px;
-      font-size: clamp(36px, 5vw, 62px);
-      letter-spacing: -0.6px;
-      line-height: 1.03;
-    }
-    .lead{
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: clamp(16px, 2.1vw, 20px);
-      line-height: 1.5;
-      max-width: 60ch;
-    }
-    .lead strong{ color: rgba(255,255,255,.92); font-weight: 700; }
-
-    .btnrow{
+    /* CTA */
+    .header-cta{
       display:flex;
-      flex-wrap: wrap;
-      gap: 12px;
       align-items:center;
-      margin-top: 14px;
+      gap: 10px;
+      flex: 0 0 auto;
     }
-    .btn{
+    .btn-cta{
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      font-weight: 700;
+      text-decoration:none;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap: 10px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      font-weight: 700;
-      letter-spacing: .2px;
-      min-width: 170px;
-      cursor: pointer;
-      user-select:none;
+      gap:8px;
     }
-    .btn:hover{ background: rgba(255,255,255,.06); }
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(139,92,246,.95), rgba(167,139,250,.95));
-      border-color: rgba(255,255,255,.10);
-      box-shadow: 0 14px 35px rgba(139,92,246,.22);
-    }
-    .btn.primary:hover{ filter: brightness(1.03); }
-    .btn.ghost{
-      background: rgba(255,255,255,.03);
+    .btn-cta.primary{
+      background: linear-gradient(135deg, rgba(167,139,250,.95), rgba(139,92,246,.95));
+      border: 0;
+      color:#0b1020;
     }
 
+    /* Mobile: collapse nav into a simple "Menu" */
+    .menu-btn{ display:none; }
+    @media (max-width: 720px){
+      .nav{ display:none; }
+      .menu-btn{ display:inline-flex; }
+      .brand-tag{ max-width: 130px; }
+    }
+
+    /* ===== Sections / Cards ===== */
+    .hero{
+      padding: 46px 0 26px;
+    }
+    .hero-card{
+      background: rgba(11,26,44,.55);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 34px;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background: radial-gradient(700px 220px at 30% 10%, rgba(167,139,250,.18), transparent 60%);
+      pointer-events:none;
+    }
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(40px, 6vw, 62px);
+      letter-spacing: -0.8px;
+    }
+    .lead{
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.5;
+      max-width: 860px;
+    }
     .pill{
-      margin-top: 18px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
       padding: 12px 14px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      color: var(--muted);
-      font-size: 13px;
-      max-width: fit-content;
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.78);
+      margin-top: 18px;
+      font-weight: 650;
     }
     .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: var(--purple);
-      box-shadow: 0 0 0 6px rgba(139,92,246,.15);
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--purple2), var(--purple));
+      box-shadow: 0 0 20px rgba(139,92,246,.45);
     }
 
-    /* Side card: Core */
-    .sideCard{ padding: 18px; }
-    .sideTitle{
-      font-weight: 800;
-      margin: 0 0 10px;
-      letter-spacing:.2px;
-      font-size: 16px;
+    .btn-row{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
     }
-    .coreList{
+    .btn{
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: white;
+      font-weight: 800;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-width: 180px;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(167,139,250,.95), rgba(139,92,246,.95));
+      color:#0b1020;
+      border:0;
+    }
+    .btn:hover, .btn-cta:hover{ transform: translateY(-1px); }
+    .subline{
+      margin-top: 14px;
+      color: rgba(255,255,255,.62);
+      font-size: 15px;
+    }
+
+    .grid{
       display:grid;
-      gap: 10px;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .card{
+      grid-column: span 6;
+      background: rgba(11,26,44,.55);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .card h2{
+      margin: 0 0 12px;
+      font-size: 22px;
+      letter-spacing: -.2px;
+    }
+    .card p{
       margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .list{
+      margin: 14px 0 0;
       padding: 0;
       list-style:none;
-    }
-    .coreItem{
       display:flex;
+      flex-direction:column;
       gap: 10px;
-      padding: 12px;
+    }
+    .li{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding: 12px 12px;
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.03);
@@ -243,337 +285,283 @@
     .check{
       width: 22px; height: 22px;
       border-radius: 8px;
-      background: rgba(34,197,94,.14);
-      border: 1px solid rgba(34,197,94,.25);
       display:grid; place-items:center;
-      flex: 0 0 auto;
-      margin-top: 2px;
+      background: rgba(34,197,94,.16);
+      border: 1px solid rgba(34,197,94,.35);
+      color: #9ef5bf;
+      font-weight: 900;
+      flex:0 0 auto;
+      margin-top: 1px;
     }
-    .check svg{ width:14px; height:14px; }
-    .coreItem b{ display:block; margin-bottom: 2px; }
-    .coreItem span{ color: var(--muted2); font-size: 13px; line-height: 1.35; }
+    .li b{ display:block; margin-bottom: 2px; }
+    .li span{ color: var(--muted2); line-height: 1.45; }
 
-    /* Sections */
-    section{ padding: 18px 0 30px; }
-    .sectionTitle{
-      margin: 0 0 10px;
-      font-size: 20px;
-      letter-spacing: -0.2px;
-    }
-    .muted{ color: var(--muted); line-height: 1.5; }
-
-    .three{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 14px;
-    }
     .mini{
-      padding: 16px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.03);
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .tag{
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
       border: 1px solid rgba(255,255,255,.08);
-    }
-    .mini b{ display:block; margin-bottom: 6px; }
-    .mini p{ margin:0; color: var(--muted2); font-size: 14px; line-height: 1.45; }
-
-    /* Early Access */
-    .formWrap{
-      padding: 18px;
-      display:grid;
-      gap: 12px;
-    }
-    .field{
-      display:grid;
-      gap: 8px;
-    }
-    label{
-      color: var(--muted);
+      color: rgba(255,255,255,.78);
+      font-weight: 650;
       font-size: 13px;
     }
-    input, textarea{
-      width: 100%;
-      background: rgba(255,255,255,.03);
+
+    /* responsive */
+    @media (max-width: 900px){
+      .card{ grid-column: span 12; }
+      .hero-card{ padding: 26px; }
+      .btn{ min-width: 160px; }
+    }
+
+    /* Early access form */
+    .form{
+      margin-top: 12px;
+      display:grid;
+      gap: 12px;
+    }
+    .input{
+      width:100%;
+      padding: 14px 14px;
+      border-radius: 16px;
       border: 1px solid rgba(255,255,255,.12);
-      border-radius: 14px;
-      padding: 12px 12px;
-      color: var(--text);
+      background: rgba(255,255,255,.04);
+      color: white;
       outline:none;
       font-size: 15px;
     }
-    textarea{ min-height: 96px; resize: vertical; }
-    input:focus, textarea:focus{
-      border-color: rgba(139,92,246,.55);
-      box-shadow: 0 0 0 6px rgba(139,92,246,.10);
+    .input::placeholder{ color: rgba(255,255,255,.45); }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
-    .formActions{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      align-items:center;
-      margin-top: 4px;
-    }
-    .hint{
-      color: var(--muted2);
-      font-size: 13px;
-      line-height: 1.4;
-    }
-    .footer{
-      padding: 24px 0 40px;
-      color: rgba(255,255,255,.45);
-      font-size: 13px;
-      text-align:center;
+    @media (max-width: 720px){
+      .row{ grid-template-columns: 1fr; }
     }
 
-    /* Responsive */
-    @media (max-width: 900px){
-      .grid{ grid-template-columns: 1fr; }
-      .hero{ padding-top: 42px; }
-      .heroCard{ padding: 22px; }
-      .btn{ min-width: 160px; }
-      .three{ grid-template-columns: 1fr; }
-      .toprow{ align-items:flex-start; }
-      .nav{ justify-content:flex-start; }
+    .foot{
+      margin-top: 28px;
+      text-align:center;
+      color: rgba(255,255,255,.5);
+      font-size: 13px;
     }
   </style>
 </head>
 
 <body>
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="wrap container">
-      <div class="toprow">
-        <div class="brand">
-          <div class="logo" aria-hidden="true"><span>K</span></div>
-          <div class="brandtxt">
-            <b>Knowledge</b>
-            <small>Built for the standard.</small>
-          </div>
-        </div>
 
-        <nav class="nav" aria-label="Primary">
-          <a href="#core">Core</a>
-          <a href="#proof">Proof</a>
-          <a href="#early">Early Access</a>
-          <a href="#links">Links</a>
-          <a class="cta" href="#early">Request</a>
-        </nav>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-mark">K</div>
+        <div class="brand-text">
+          <div class="brand-name">Knowledge</div>
+          <div class="brand-tag">Built for the standard.</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#core">Core</a>
+        <a href="#proof">Proof</a>
+        <a href="#early">Early Access</a>
+        <a href="#links">Links</a>
+      </nav>
+
+      <div class="header-cta">
+        <a class="btn-cta menu-btn" href="#links">Menu</a>
+        <a class="btn-cta primary" href="#early">Request</a>
       </div>
     </div>
-  </div>
+  </header>
 
-  <!-- Hero -->
-  <div class="wrap container hero">
-    <div class="grid">
-      <div class="card heroCard">
+  <div class="wrap">
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-card">
         <h1>Clarity over noise.</h1>
         <p class="lead">
-          Knowledge is a calm, founder-led platform for <strong>learning</strong>, <strong>growth</strong>, and <strong>healing</strong> —
+          Knowledge is a calm, founder-led platform for <b>learning</b>, <b>growth</b>, and <b>healing</b> —
           built around outcome-based loops, not vanity metrics.
         </p>
 
-        <div class="btnrow">
+        <div class="btn-row">
           <a class="btn primary" href="#early">Join Early Access</a>
-          <a class="btn ghost" href="#proof">See Proof</a>
+          <a class="btn" href="#proof">See Proof</a>
           <a class="btn" href="#links">Deck + Demo</a>
         </div>
 
-        <div class="pill" role="note">
-          <span class="dot" aria-hidden="true"></span>
+        <div class="subline">
+          We don’t chase attention. We build systems that hold up — and let results speak.
+        </div>
+
+        <div class="pill">
+          <span class="dot"></span>
           Founder-led • Aligned access • Build-to-standard
         </div>
       </div>
+    </section>
 
-      <aside class="card sideCard" id="core">
-        <p class="sideTitle">The Core</p>
-        <ul class="coreList">
-          <li class="coreItem">
-            <div class="check" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M20 7L10 17l-5-5" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
+    <!-- CORE -->
+    <section class="grid" id="core">
+      <div class="card">
+        <h2>The Core</h2>
+        <p>These are the four non-negotiables behind Knowledge.</p>
+
+        <ul class="list">
+          <li class="li">
+            <div class="check">✓</div>
             <div>
               <b>Clarity</b>
-              <span>Quiet design, clean signal, no performative noise.</span>
+              <span>Quiet UI. No performative mechanics. Designed for repeat use.</span>
             </div>
           </li>
-          <li class="coreItem">
-            <div class="check" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M20 7L10 17l-5-5" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
+          <li class="li">
+            <div class="check">✓</div>
             <div>
               <b>Learning</b>
-              <span>Capture → reflect → apply → return. Real loops that hold up.</span>
+              <span>Real loops: capture → reflect → apply → return. Build what actually sticks.</span>
             </div>
           </li>
-          <li class="coreItem">
-            <div class="check" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M20 7L10 17l-5-5" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <b>Growth</b>
-              <span>Momentum that compounds — private by default, earned over time.</span>
-            </div>
-          </li>
-          <li class="coreItem">
-            <div class="check" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M20 7L10 17l-5-5" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
+          <li class="li">
+            <div class="check">✓</div>
             <div>
               <b>Healing</b>
-              <span>Designed to leave you clearer, calmer, and more capable.</span>
+              <span>Private by default. Reflection-first. Progress without scores.</span>
+            </div>
+          </li>
+          <li class="li">
+            <div class="check">✓</div>
+            <div>
+              <b>Growth</b>
+              <span>Outcome-based momentum. We prioritize people who move with intention.</span>
             </div>
           </li>
         </ul>
-      </aside>
-    </div>
-  </div>
-
-  <!-- Proof -->
-  <section id="proof">
-    <div class="wrap container">
-      <h2 class="sectionTitle">Proof</h2>
-      <p class="muted">If you want to see it moving, the proof is public.</p>
-
-      <div class="three">
-        <div class="mini">
-          <b>Loom walkthrough</b>
-          <p>Watch the current demo and product direction.</p>
-          <div class="btnrow" style="margin-top:12px;">
-            <a class="btn primary" target="_blank" rel="noopener" href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc">Watch Demo</a>
-          </div>
-        </div>
 
         <div class="mini">
-          <b>Deck</b>
-          <p>Read the pitch deck: vision, system, and why it’s different.</p>
-          <div class="btnrow" style="margin-top:12px;">
-            <a class="btn" target="_blank" rel="noopener" href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd">Open Deck</a>
-          </div>
-        </div>
-
-        <div class="mini">
-          <b>Founder</b>
-          <p>Follow the build. No hype. Just movement.</p>
-          <div class="btnrow" style="margin-top:12px;">
-            <a class="btn" target="_blank" rel="noopener" href="https://www.linkedin.com/in/founder-knowledge-b05b163a2?utm_source=share_via&utm_content=profile&utm_medium=member_ios">LinkedIn</a>
-          </div>
+          <span class="tag">No vanity metrics</span>
+          <span class="tag">Founder-led</span>
+          <span class="tag">Outcome-based</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Early access -->
-  <section id="early">
-    <div class="wrap container">
-      <h2 class="sectionTitle">Early Access</h2>
-      <p class="muted">Aligned access only. Tell us what you’re trying to do — we’ll review requests manually.</p>
+      <!-- PROOF -->
+      <div class="card" id="proof">
+        <h2>Proof</h2>
+        <p>
+          We don’t talk. We show. Watch the Loom demo and see the product direction.
+        </p>
 
-      <div class="card formWrap">
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" type="email" placeholder="you@domain.com" autocomplete="email" />
-        </div>
-        <div class="field">
-          <label for="line">One line (optional)</label>
-          <textarea id="line" placeholder="What do you want Knowledge to help you do?"></textarea>
+        <div class="btn-row" style="margin-top:14px;">
+          <a class="btn primary" href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc" target="_blank" rel="noopener">Watch Demo (Loom)</a>
+          <a class="btn" href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd" target="_blank" rel="noopener">Open Deck</a>
         </div>
 
-        <div class="formActions">
-          <button class="btn primary" id="sendBtn" type="button">Send Early Access Request</button>
-          <button class="btn ghost" id="copyBtn" type="button">Copy message</button>
-        </div>
-
-        <div class="hint" id="hint">
-          This opens your mail app with the request pre-filled.
+        <div class="subline" style="margin-top:10px;">
+          Standard doesn’t look like the standard at first — because the market rewards noise.
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Links -->
-  <section id="links">
-    <div class="wrap container">
-      <h2 class="sectionTitle">Links</h2>
-      <p class="muted">Everything in one place.</p>
+    <!-- EARLY ACCESS -->
+    <section class="grid" id="early">
+      <div class="card" style="grid-column: span 12;">
+        <h2>Request Early Access</h2>
+        <p>Aligned access only. One line is optional — keep it simple.</p>
 
-      <div class="three">
-        <div class="mini">
-          <b>Demo</b>
-          <p>Loom walkthrough.</p>
-          <div class="btnrow" style="margin-top:12px;">
-            <a class="btn primary" target="_blank" rel="noopener" href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc">Open</a>
+        <!-- NO "destination" text anywhere. This uses mailto to open user's email app. -->
+        <form class="form" id="earlyForm">
+          <div class="row">
+            <input class="input" type="email" id="email" placeholder="Email" required />
+            <input class="input" type="text" id="line" placeholder="One line (optional): What do you want Knowledge to help you do?" />
           </div>
-        </div>
-        <div class="mini">
-          <b>Deck</b>
-          <p>Pitch deck reader.</p>
-          <div class="btnrow" style="margin-top:12px;">
-            <a class="btn" target="_blank" rel="noopener" href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd">Open</a>
+
+          <button class="btn primary" type="submit" style="border-radius:16px; cursor:pointer;">
+            Send Early Access Request
+          </button>
+
+          <button class="btn" type="button" id="copyBtn" style="border-radius:16px; cursor:pointer;">
+            Copy message
+          </button>
+
+          <div class="subline">
+            What happens next: We review requests manually. The goal is alignment — people who value clarity, depth, and outcomes.
           </div>
-        </div>
-        <div class="mini">
-          <b>LinkedIn</b>
-          <p>Founder page.</p>
-          <div class="btnrow" style="margin-top:12px;">
-            <a class="btn" target="_blank" rel="noopener" href="https://www.linkedin.com/in/founder-knowledge-b05b163a2?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Open</a>
-          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- LINKS -->
+    <section class="grid" id="links">
+      <div class="card" style="grid-column: span 12;">
+        <h2>Links</h2>
+        <p>Everything in one place.</p>
+
+        <div class="btn-row" style="margin-top:14px;">
+          <a class="btn primary" href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc" target="_blank" rel="noopener">Demo (Loom)</a>
+          <a class="btn" href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd" target="_blank" rel="noopener">Pitch Deck</a>
+          <a class="btn" href="https://www.linkedin.com/in/founder-knowledge-b05b163a2?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="wrap container footer">
-    © 2026 Knowledge. Built for the standard.
+    <div class="foot">© 2026 Knowledge. Built for the standard.</div>
   </div>
 
   <script>
-    (function(){
-      const TO = "founder@knowledge-app.com";
+    // Early Access: clean mailto flow (no destination text shown on page)
+    const DEST_EMAIL = "founder@knowledge-app.com";
 
-      function buildMessage(){
-        const email = (document.getElementById("email").value || "").trim();
-        const line  = (document.getElementById("line").value || "").trim();
+    function buildMessage(email, line){
+      const oneLine = (line || "").trim();
+      return [
+        "Early Access Request — Knowledge",
+        "",
+        "Email: " + (email || ""),
+        "One line: " + (oneLine ? oneLine : "(none)"),
+        "",
+        "Built for the standard."
+      ].join("\n");
+    }
 
-        const parts = [];
-        parts.push("Early Access Request");
-        parts.push("");
-        if(email) parts.push("From: " + email);
-        if(line)  parts.push("One line: " + line);
-        parts.push("");
-        parts.push("— Sent from knowledge-app.com");
+    document.getElementById("earlyForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const line  = document.getElementById("line").value.trim();
 
-        return parts.join("\n");
+      const subject = encodeURIComponent("Early Access Request — Knowledge");
+      const body = encodeURIComponent(buildMessage(email, line));
+      // opens user’s mail app
+      window.location.href = `mailto:${DEST_EMAIL}?subject=${subject}&body=${body}`;
+    });
+
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      const email = document.getElementById("email").value.trim();
+      const line  = document.getElementById("line").value.trim();
+      const msg = buildMessage(email, line);
+
+      try{
+        await navigator.clipboard.writeText(msg);
+        alert("Copied.");
+      }catch(err){
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = msg;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        alert("Copied.");
       }
-
-      function mailtoLink(){
-        const subject = encodeURIComponent("Knowledge — Early Access Request");
-        const body = encodeURIComponent(buildMessage());
-        return `mailto:${TO}?subject=${subject}&body=${body}`;
-      }
-
-      document.getElementById("sendBtn").addEventListener("click", () => {
-        window.location.href = mailtoLink();
-      });
-
-      document.getElementById("copyBtn").addEventListener("click", async () => {
-        try{
-          await navigator.clipboard.writeText(buildMessage());
-          const hint = document.getElementById("hint");
-          hint.textContent = "Copied. Paste it anywhere.";
-          setTimeout(()=> hint.textContent = "This opens your mail app with the request pre-filled.", 1800);
-        }catch(e){
-          alert("Copy failed — select the text manually.");
-        }
-      });
-    })();
+    });
   </script>
 </body>
 </html>
