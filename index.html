@@ -3,449 +3,576 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Knowledge — clarity over noise. A platform for learning, growth, and healing." />
   <title>Knowledge — Clarity over noise</title>
-  <meta name="description" content="Knowledge is built for clarity over noise — a platform for learning, growth, and healing." />
 
   <style>
     :root{
       --bg:#071321;
       --panel:#0b1a2c;
+      --panel2:#0a1524;
       --text:#ffffff;
-      --muted:rgba(255,255,255,.72);
+      --muted:rgba(255,255,255,.74);
       --muted2:rgba(255,255,255,.55);
       --stroke:rgba(255,255,255,.10);
-      --purple:#8b5cf6;
+      --purple:#7c5cff;
       --purple2:#a78bfa;
       --good:#22c55e;
       --shadow: 0 18px 60px rgba(0,0,0,.45);
       --radius: 18px;
+      --radius2: 14px;
+      --max: 1100px;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", Helvetica;
-      background: radial-gradient(1200px 700px at 20% 10%, rgba(139,92,246,.20), transparent 60%),
-                  radial-gradient(900px 600px at 80% 20%, rgba(167,139,250,.12), transparent 55%),
-                  linear-gradient(180deg, #06101c 0%, var(--bg) 55%, #050b14 100%);
-      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1100px 600px at 50% -10%, rgba(124,92,255,.25), transparent 60%),
+                  radial-gradient(900px 500px at 15% 20%, rgba(167,139,250,.18), transparent 55%),
+                  linear-gradient(180deg, #071321 0%, #050b14 100%);
+      color: var(--text);
+      overflow-x:hidden;
     }
 
-    a{color:inherit; text-decoration:none}
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:32px 18px 70px;
-    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ width:100%; max-width:var(--max); margin:0 auto; padding:0 20px; }
 
     /* Top bar */
-    .top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:22px;
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,19,33,.55);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      height:64px;
     }
     .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      letter-spacing:.2px;
-      font-weight:700;
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:.2px;
     }
-    .dot{
-      width:10px;height:10px;border-radius:99px;
-      background:var(--purple);
-      box-shadow:0 0 0 6px rgba(139,92,246,.18);
+    .brand-badge{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(167,139,250,.95));
+      box-shadow: 0 10px 30px rgba(124,92,255,.25);
+      display:grid; place-items:center;
+      font-weight:900;
     }
     .nav{
-      display:flex; gap:10px; flex-wrap:wrap;
+      display:flex; align-items:center; gap:16px;
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
     }
+    .nav a{ padding:10px 10px; border-radius:10px; }
+    .nav a:hover{ background: rgba(255,255,255,.06); color:#fff; }
 
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 16px;
-      border-radius:12px;
-      border:1px solid var(--stroke);
-      background:rgba(255,255,255,.03);
-      color:var(--text);
-      transition:transform .12s ease, background .12s ease, border-color .12s ease;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:#fff;
+      font-weight:800;
+      letter-spacing:.15px;
       cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
       user-select:none;
-      font-weight:600;
-      line-height:1;
       white-space:nowrap;
     }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(167,139,250,.35); background: rgba(255,255,255,.05); }
-    .btn.primary{
-      background: linear-gradient(135deg, var(--purple) 0%, var(--purple2) 100%);
-      border-color: transparent;
-      box-shadow: 0 12px 32px rgba(139,92,246,.28);
-      color:#0b1020;
+    .btn:hover{ background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18); transform: translateY(-1px); }
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(124,92,255,1), rgba(167,139,250,1));
+      border-color: rgba(255,255,255,.0);
+      box-shadow: 0 18px 45px rgba(124,92,255,.28);
+      color:#08101c;
     }
-    .btn.primary:hover{ background: linear-gradient(135deg, #9a76ff 0%, #b49cff 100%); }
-    .btn.ghost{ background: transparent; }
+    .btn-primary:hover{ transform: translateY(-1px); box-shadow: 0 22px 55px rgba(124,92,255,.34); }
 
     /* Hero */
     .hero{
+      padding: 72px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 24px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+
+    .headline{
+      font-size: clamp(42px, 5vw, 64px);
+      line-height: 1.03;
+      margin: 0 0 14px;
+      letter-spacing: -1px;
+    }
+    .subhead{
+      margin:0 0 22px;
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 56ch;
+    }
+    .hero-actions{
+      display:flex; flex-wrap:wrap; gap:12px; align-items:center;
+      margin: 18px 0 10px;
+    }
+    .mini{
+      font-size: 13px;
+      color: var(--muted2);
+      margin-top: 12px;
+      line-height:1.45;
+    }
+
+    .card{
       border:1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      background: linear-gradient(180deg, rgba(11,26,44,.80), rgba(10,21,36,.78));
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 38px 22px;
-      overflow:hidden;
-      position:relative;
     }
-    .hero:before{
-      content:"";
-      position:absolute;
-      inset:-120px -200px auto auto;
-      width:520px;
-      height:520px;
-      background: radial-gradient(circle at 30% 30%, rgba(139,92,246,.35), transparent 60%);
-      filter: blur(2px);
-      transform: rotate(12deg);
-      pointer-events:none;
-    }
+    .card-pad{ padding: 18px; }
 
-    .grid{
+    .stat-row{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 24px;
-      align-items:center;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
     }
-
-    h1{
-      margin:0 0 10px;
-      font-size: clamp(40px, 4.2vw, 62px);
-      letter-spacing:-.8px;
+    .stat{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding: 14px;
+      min-height: 78px;
     }
-    .sub{
-      margin: 0 0 22px;
-      color: var(--muted);
-      font-size: clamp(16px, 1.55vw, 20px);
-      line-height:1.55;
-      max-width: 62ch;
-    }
-    .ctaRow{ display:flex; gap:12px; flex-wrap:wrap; }
-
-    .proofCard{
-      border:1px solid var(--stroke);
-      border-radius: 16px;
-      padding:16px;
-      background: rgba(0,0,0,.15);
-    }
-    .proofTitle{ font-weight:800; margin:0 0 8px; }
-    .proofText{ margin:0 0 12px; color: var(--muted2); line-height:1.5; }
-    .pillRow{ display:flex; gap:10px; flex-wrap:wrap; }
-    .pill{
-      padding:10px 12px;
-      border-radius: 999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      font-weight:600;
-      font-size: 13px;
-    }
+    .stat .k{ font-size:12px; color:var(--muted2); font-weight:700; letter-spacing:.2px; }
+    .stat .v{ margin-top:8px; font-size:14px; color:var(--muted); line-height:1.35; font-weight:650; }
 
     /* Sections */
     .section{
-      margin-top: 18px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.02);
-      border-radius: var(--radius);
-      padding: 18px;
+      padding: 34px 0;
     }
     .section h2{
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing:.2px;
+      margin: 0 0 12px;
+      font-size: 22px;
+      letter-spacing: -.3px;
     }
-    .section p{ margin:0; color: var(--muted); line-height:1.6; }
+    .section p{
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
 
-    .cards{
-      margin-top: 12px;
+    .grid-3{
       display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
     }
-    .card{
-      border:1px solid var(--stroke);
-      background: rgba(0,0,0,.12);
-      border-radius: 16px;
-      padding: 14px;
-      min-height: 112px;
+    @media (max-width: 980px){
+      .grid-3{ grid-template-columns: 1fr; }
     }
-    .card .k{
+
+    .pill{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      margin-bottom:8px;
-      font-weight:800;
-    }
-    .spark{
-      width:9px;height:9px;border-radius:99px;
-      background: rgba(167,139,250,.95);
-      box-shadow: 0 0 0 6px rgba(167,139,250,.15);
-    }
-    .card p{ margin:0; color: var(--muted2); font-size: 14px; line-height:1.45; }
-
-    /* Early access */
-    .ea{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 14px;
-      align-items:start;
-    }
-    .form{
-      border:1px solid var(--stroke);
-      border-radius: 16px;
-      padding: 14px;
-      background: rgba(0,0,0,.12);
-    }
-    label{ display:block; font-size: 13px; color: var(--muted); margin-bottom: 8px; font-weight:700; }
-    input, textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
-      color: var(--text);
-      outline:none;
-      font-size: 15px;
-    }
-    textarea{ min-height: 92px; resize: vertical; }
-    input:focus, textarea:focus{ border-color: rgba(167,139,250,.5); }
-    .formRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
-    .note{
-      margin-top: 10px;
-      font-size: 13px;
-      color: var(--muted2);
-      line-height:1.45;
-    }
-    .ok{
-      display:none;
-      margin-top:10px;
       padding:10px 12px;
-      border-radius: 12px;
-      border:1px solid rgba(34,197,94,.25);
-      background: rgba(34,197,94,.08);
-      color: rgba(220,255,236,.95);
+      border-radius: 999px;
+      color: var(--muted);
       font-weight:700;
       font-size: 13px;
     }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, rgba(124,92,255,1), rgba(167,139,250,1));
+      box-shadow: 0 10px 26px rgba(124,92,255,.25);
+    }
 
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:12px;
+    }
+    .item{
+      display:flex;
+      gap:12px;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .item b{ font-size:14px; }
+    .item span{ color:var(--muted); font-size:14px; line-height:1.45; }
+    .tick{
+      width:24px; height:24px; border-radius:9px;
+      display:grid; place-items:center;
+      background: rgba(34,197,94,.12);
+      border:1px solid rgba(34,197,94,.22);
+      color: rgba(34,197,94,1);
+      flex:0 0 auto;
+      font-weight:900;
+      margin-top:1px;
+    }
+
+    /* Links block */
+    .linkbox{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 980px){
+      .linkbox{ grid-template-columns: 1fr; }
+    }
+    .link{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding: 14px;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .link:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); }
+    .link .t{ font-weight:900; }
+    .link .d{ color:var(--muted); font-size:13px; margin-top:6px; line-height:1.4; }
+
+    /* Early access */
+    .form{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 980px){
+      .form{ grid-template-columns: 1fr; }
+    }
+    input, textarea{
+      width:100%;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color:#fff;
+      padding: 12px 12px;
+      font-size: 14px;
+      outline:none;
+    }
+    textarea{ min-height: 120px; resize: vertical; grid-column: 1 / -1; }
+    input::placeholder, textarea::placeholder{ color: rgba(255,255,255,.45); }
+
+    .form-actions{
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+      grid-column: 1 / -1;
+      margin-top: 2px;
+    }
+    .note{
+      margin-top: 10px;
+      color: var(--muted2);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .hide{
+      display:none !important;
+    }
+
+    /* Footer */
     footer{
-      margin-top: 16px;
-      color: rgba(255,255,255,.40);
-      font-size: 12px;
-      text-align:center;
+      padding: 34px 0 44px;
+      color: var(--muted2);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 26px;
+    }
+    .foot{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      flex-wrap:wrap;
     }
 
-    @media (max-width: 900px){
-      .grid{ grid-template-columns: 1fr; }
-      .cards{ grid-template-columns: 1fr 1fr; }
-      .ea{ grid-template-columns: 1fr; }
-    }
-    @media (max-width: 520px){
-      .cards{ grid-template-columns: 1fr; }
-      .btn{ width:100%; }
-      .nav .btn{ width:auto; }
+    /* Smooth */
+    html{ scroll-behavior:smooth; }
+
+    /* Subtle divider */
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.10), transparent);
+      margin: 22px 0;
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand">
-        <span class="dot"></span>
-        <span>Knowledge</span>
-      </div>
-      <div class="nav">
-        <a class="btn ghost" href="#core">Core</a>
-        <a class="btn ghost" href="#proof">Proof</a>
-        <a class="btn ghost" href="#early">Early Access</a>
-      </div>
-    </div>
-
-    <section class="hero">
-      <div class="grid">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand" aria-label="Knowledge">
+        <div class="brand-badge">K</div>
         <div>
-          <h1>Clarity over noise.</h1>
-          <p class="sub">
-            Knowledge is built for learning, growth, and healing — with a core that holds up.
-            Quiet by design. Outcome-driven. Standard-minded.
+          <div style="font-size:14px; font-weight:900;">Knowledge</div>
+          <div style="font-size:12px; color:var(--muted2); font-weight:700;">Built for the standard.</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#core">Core</a>
+        <a href="#proof">Proof</a>
+        <a href="#access">Early Access</a>
+        <a href="#links">Links</a>
+      </nav>
+
+      <a class="btn btn-primary" href="#access">Request Early Access</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1 class="headline">Clarity over noise.</h1>
+          <p class="subhead">
+            Knowledge is a calm, founder-led platform for <b>learning</b>, <b>growth</b>, and <b>healing</b> —
+            built around outcome-based loops, not vanity metrics.
           </p>
 
-          <div class="ctaRow">
-            <a class="btn primary" href="#early">Join Early Access</a>
-            <a class="btn" href="#proof">Watch Demo</a>
-            <a class="btn" href="#proof">View Deck</a>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#access">Join Early Access</a>
+            <a class="btn" href="#proof">See Proof</a>
+            <a class="btn" href="#links">Deck + Demo</a>
+          </div>
+
+          <div class="mini">
+            We don’t chase attention. We build systems that hold up — and let results speak.
           </div>
         </div>
 
-        <div class="proofCard" id="proof">
-          <p class="proofTitle">Proof, not talk.</p>
-          <p class="proofText">If you want to understand Knowledge fast—use the links below.</p>
-          <div class="ctaRow">
-            <!-- Your links -->
-            <a class="btn" target="_blank" rel="noopener" href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc">Loom Demo</a>
-            <a class="btn" target="_blank" rel="noopener" href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd">Pitch Deck</a>
-            <a class="btn" target="_blank" rel="noopener" href="https://www.linkedin.com/in/founder-knowledge-b05b163a2?utm_source=share_via&utm_content=profile&utm_medium=member_ios">LinkedIn</a>
+        <aside class="card card-pad">
+          <div class="pill"><span class="dot"></span> Founder-led • Aligned access • Build-to-standard</div>
+
+          <div class="divider"></div>
+
+          <div style="font-size:14px; font-weight:900; letter-spacing:.2px;">What you’ll feel</div>
+          <div class="list" style="margin-top:10px;">
+            <div class="item">
+              <div class="tick">✓</div>
+              <div>
+                <b>Quiet UI</b><br>
+                <span>Designed for repeat use — not performance.</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="tick">✓</div>
+              <div>
+                <b>Real loops</b><br>
+                <span>Capture → reflect → apply → return. Outcomes win.</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="tick">✓</div>
+              <div>
+                <b>Founder standards</b><br>
+                <span>No noise mechanics. No fake engagement economy.</span>
+              </div>
+            </div>
           </div>
 
-          <div class="pillRow" style="margin-top:12px;">
-            <span class="pill">No vanity metrics</span>
-            <span class="pill">Retention > hype</span>
-            <span class="pill">Quiet by design</span>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="k">CORE POSITION</div>
+              <div class="v">Clarity, depth, outcomes.</div>
+            </div>
+            <div class="stat">
+              <div class="k">ACCESS</div>
+              <div class="v">Manual review. Alignment first.</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="core" class="section">
+      <div class="wrap">
+        <h2>Our core</h2>
+        <p>
+          Everything we build stays inside this. No drift. No noise.
+        </p>
+
+        <div class="grid-3">
+          <div class="card card-pad">
+            <div class="pill"><span class="dot"></span> Clarity</div>
+            <p style="margin-top:12px;">Reduce noise. Raise signal. Design for calm focus and real movement.</p>
+          </div>
+
+          <div class="card card-pad">
+            <div class="pill"><span class="dot"></span> Healing</div>
+            <p style="margin-top:12px;">A safer environment for reflection, self-trust, and internal stability.</p>
+          </div>
+
+          <div class="card card-pad">
+            <div class="pill"><span class="dot"></span> Growth</div>
+            <p style="margin-top:12px;">Progress without performative mechanics. Outcomes over applause.</p>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="card card-pad">
+          <div class="pill"><span class="dot"></span> Learning loops</div>
+          <p style="margin-top:12px;">
+            The foundation is repeatable: <b>Learn</b> → <b>Capture</b> → <b>Reflect</b> → <b>Apply</b> → <b>Return</b>.
+            That’s what compounds — and what we monetize with integrity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof" class="section">
+      <div class="wrap">
+        <h2>Proof</h2>
+        <p>
+          No hype. Just movement. Here’s what’s live and what’s next.
+        </p>
+
+        <div class="grid-3">
+          <div class="card card-pad">
+            <div class="pill"><span class="dot"></span> Live landing</div>
+            <p style="margin-top:12px;">This page is the intake door. The standard starts here.</p>
+          </div>
+          <div class="card card-pad">
+            <div class="pill"><span class="dot"></span> Demo walkthrough</div>
+            <p style="margin-top:12px;">A clear look at the vision and the loop in motion.</p>
+          </div>
+          <div class="card card-pad">
+            <div class="pill"><span class="dot"></span> Investor deck</div>
+            <p style="margin-top:12px;">Aligned story. Clean execution. Built to scale.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="core">
-      <h2>Our core</h2>
-      <p>
-        This is the foundation. Not a mood. Not marketing.
-        These are the four that everything in Knowledge is built to protect.
-      </p>
+    <section id="access" class="section">
+      <div class="wrap">
+        <h2>Request early access</h2>
+        <p>
+          This is reviewed manually. If you value clarity, depth, and outcomes — you’re in the right place.
+        </p>
 
-      <div class="cards">
-        <div class="card">
-          <div class="k"><span class="spark"></span>Clarity</div>
-          <p>Signal-first. No noise architecture. Your mind stays clean.</p>
-        </div>
-        <div class="card">
-          <div class="k"><span class="spark"></span>Learning</div>
-          <p>Fundamental loops that create real understanding—not consumption.</p>
-        </div>
-        <div class="card">
-          <div class="k"><span class="spark"></span>Growth</div>
-          <p>Progress without performative mechanics. Outcome over optics.</p>
-        </div>
-        <div class="card">
-          <div class="k"><span class="spark"></span>Healing</div>
-          <p>A safe environment that stabilizes people while they build.</p>
-        </div>
-      </div>
-    </section>
+        <div class="card card-pad">
+          <form id="earlyAccessForm" class="form" autocomplete="on">
+            <input id="ea_email" type="email" placeholder="Email" required />
+            <input id="ea_name" type="text" placeholder="Name (optional)" />
+            <textarea id="ea_line" placeholder="One line: What do you want Knowledge to help you do? (optional)"></textarea>
 
-    <section class="section" id="early">
-      <h2>Join Early Access</h2>
-      <p>Drop your email + a one-liner. This will open your mail app and send it to us.</p>
-
-      <div class="ea" style="margin-top:12px;">
-        <div class="form">
-          <form id="eaForm">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@domain.com" required />
-
-            <div style="height:10px"></div>
-
-            <label for="note">One line (optional)</label>
-            <textarea id="note" name="note" placeholder="What do you want Knowledge to help you do?"></textarea>
-
-            <div class="formRow">
-              <button class="btn primary" type="submit">Send Early Access Request</button>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Send Early Access Request</button>
               <button class="btn" type="button" id="copyBtn">Copy message</button>
+              <span id="copied" class="note hide">Copied.</span>
             </div>
 
-            <div class="ok" id="okBox">Copied. If your mail app doesn’t open, paste the message into an email and send it.</div>
             <div class="note">
-              Destination: <strong>founder@knowledge-app.com</strong><br/>
-              (We can swap this to a real signup form later. This is the fastest “works everywhere” setup.)
+              All requests are reviewed manually. We prioritize aligned builders, learners, and people who move with intention.
             </div>
           </form>
         </div>
+      </div>
+    </section>
 
-        <div class="proofCard">
-          <p class="proofTitle">What happens next</p>
-          <p class="proofText">
-            We review early requests manually.
-            The goal is alignment—people who value clarity, depth, and outcomes.
-          </p>
-          <div class="pillRow">
-            <span class="pill">Founder-led</span>
-            <span class="pill">Aligned access</span>
-            <span class="pill">Build-to-standard</span>
-          </div>
+    <section id="links" class="section">
+      <div class="wrap">
+        <h2>Links</h2>
+        <p>
+          Everything in one place — clean.
+        </p>
+
+        <div class="linkbox">
+          <a class="link" href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc" target="_blank" rel="noopener">
+            <div class="t">Demo (Loom)</div>
+            <div class="d">Walkthrough video</div>
+          </a>
+
+          <a class="link" href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd" target="_blank" rel="noopener">
+            <div class="t">Deck</div>
+            <div class="d">Investor reader link</div>
+          </a>
+
+          <a class="link" href="https://www.linkedin.com/in/founder-knowledge-b05b163a2?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">
+            <div class="t">LinkedIn</div>
+            <div class="d">Founder profile</div>
+          </a>
         </div>
       </div>
     </section>
 
     <footer>
-      © <span id="yr"></span> Knowledge. Built for the standard.
+      <div class="wrap foot">
+        <div>© <span id="year"></span> Knowledge. Built for the standard.</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="#core">Core</a>
+          <a class="btn" href="#access">Early Access</a>
+          <a class="btn" href="#links">Links</a>
+        </div>
+      </div>
     </footer>
-  </div>
+  </main>
 
   <script>
-    (function(){
-      document.getElementById("yr").textContent = new Date().getFullYear();
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-      const form = document.getElementById("eaForm");
-      const okBox = document.getElementById("okBox");
-      const copyBtn = document.getElementById("copyBtn");
+    // === Early Access: clean, no "destination" copy shown.
+    // On submit, we open the user's mail client with a composed email.
+    // Replace the email below if needed.
+    const DEST_EMAIL = "founder@knowledge-app.com";
 
-      function buildMessage(email, note){
-        const cleanNote = (note || "").trim();
-        return [
-          "Early Access Request — Knowledge",
-          "",
-          "Email: " + email,
-          cleanNote ? ("Note: " + cleanNote) : "Note: (none)",
-          "",
-          "Sent from knowledge-app.com"
-        ].join("\\n");
+    function buildMessage() {
+      const email = (document.getElementById("ea_email").value || "").trim();
+      const name  = (document.getElementById("ea_name").value || "").trim();
+      const line  = (document.getElementById("ea_line").value || "").trim();
+
+      const parts = [];
+      parts.push("EARLY ACCESS REQUEST — KNOWLEDGE");
+      parts.push("");
+      if (name) parts.push("Name: " + name);
+      if (email) parts.push("Email: " + email);
+      if (line) {
+        parts.push("");
+        parts.push("One line:");
+        parts.push(line);
       }
+      parts.push("");
+      parts.push("— Sent from knowledge-app.com");
+      return parts.join("\n");
+    }
 
-      function mailto(email, note){
-        const to = "founder@knowledge-app.com";
-        const subject = encodeURIComponent("Early Access Request — Knowledge");
-        const body = encodeURIComponent(buildMessage(email, note));
-        return `mailto:${to}?subject=${subject}&body=${body}`;
+    function openMailTo() {
+      const subject = encodeURIComponent("Knowledge — Early Access Request");
+      const body    = encodeURIComponent(buildMessage());
+      window.location.href = `mailto:${DEST_EMAIL}?subject=${subject}&body=${body}`;
+    }
+
+    document.getElementById("earlyAccessForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      openMailTo();
+    });
+
+    // Copy message
+    document.getElementById("copyBtn").addEventListener("click", async function(){
+      const msg = buildMessage();
+      try{
+        await navigator.clipboard.writeText(msg);
+        const el = document.getElementById("copied");
+        el.classList.remove("hide");
+        setTimeout(()=>el.classList.add("hide"), 1400);
+      }catch(err){
+        alert("Copy failed. You can still use Send Early Access Request.");
       }
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        okBox.style.display = "none";
-
-        const email = (document.getElementById("email").value || "").trim();
-        const note = (document.getElementById("note").value || "").trim();
-
-        if(!email || !email.includes("@")){
-          alert("Enter a valid email.");
-          return;
-        }
-
-        window.location.href = mailto(email, note);
-      });
-
-      copyBtn.addEventListener("click", async () => {
-        okBox.style.display = "none";
-        const email = (document.getElementById("email").value || "").trim() || "you@domain.com";
-        const note = (document.getElementById("note").value || "").trim();
-        const msg = buildMessage(email, note);
-
-        try{
-          await navigator.clipboard.writeText(msg);
-          okBox.style.display = "block";
-        }catch(err){
-          // fallback
-          const ta = document.createElement("textarea");
-          ta.value = msg;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand("copy");
-          document.body.removeChild(ta);
-          okBox.style.display = "block";
-        }
-      });
-    })();
+    });
   </script>
 </body>
 </html>
