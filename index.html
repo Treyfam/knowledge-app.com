@@ -1,567 +1,835 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Knowledge — Built for the standard.</title>
-  <meta name="description" content="Knowledge — Clarity over noise. A calm, founder-led platform for learning, growth, and healing." />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knowledge — The Place To Think</title>
+  <meta
+    name="description"
+    content="Knowledge is the place to think. Explore ideas, reflect on them, apply them in the real world, and verify what actually works."
+  />
+  <meta property="og:title" content="Knowledge — The Place To Think" />
+  <meta
+    property="og:description"
+    content="Explore ideas. Reflect on them. Apply them in the real world. Verify what actually works."
+  />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0b0615" />
   <style>
-    :root{
-      --bg:#071321;
-      --panel:#0b1a2c;
-      --panel2:#0e2136;
-      --text:#ffffff;
-      --muted:rgba(255,255,255,.72);
-      --muted2:rgba(255,255,255,.55);
-      --line:rgba(255,255,255,.10);
-      --shadow: 0 18px 50px rgba(0,0,0,.45);
-      --purple:#8b5cf6;
-      --purple2:#a78bfa;
-      --good:#22c55e;
-      --radius:22px;
+    :root {
+      --bg: #090510;
+      --bg2: #12091f;
+      --card: rgba(255,255,255,0.04);
+      --card2: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.08);
+      --text: #f6f1ff;
+      --muted: #cbbce6;
+      --soft: #9f93bb;
+      --accent: #8b5cf6;
+      --accent2: #c084fc;
+      --accent3: #5b21b6;
+      --max: 1160px;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(0,0,0,0.35);
     }
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue";
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
       background:
-        radial-gradient(800px 500px at 15% 10%, rgba(139,92,246,.18), transparent 60%),
-        radial-gradient(700px 500px at 85% 25%, rgba(167,139,250,.12), transparent 55%),
-        radial-gradient(900px 700px at 50% 110%, rgba(255,255,255,.05), transparent 60%),
-        var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
+        radial-gradient(circle at top left, rgba(139,92,246,0.24), transparent 30%),
+        radial-gradient(circle at top right, rgba(192,132,252,0.18), transparent 25%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 45%, var(--bg) 100%);
+      line-height: 1.6;
     }
 
-    a{ color:inherit; }
-
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding: 0 18px 70px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    /* ===== Header (Pro / Clean / Mobile-safe) ===== */
-    .header{
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header {
       position: sticky;
       top: 0;
-      z-index: 999;
-      background: rgba(7, 19, 33, .72);
+      z-index: 50;
       backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(9, 5, 16, 0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    .header-inner{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 14px 18px;
+    .header-inner {
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 16px;
     }
 
-    /* brand */
-    .brand{
-      display:flex;
-      align-items:center;
+    .brand {
+      display: flex;
+      align-items: center;
       gap: 12px;
-      min-width: 0;
-    }
-    .brand-mark{
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      display:grid;
-      place-items:center;
-      font-weight: 900;
-      letter-spacing:.2px;
-      background: linear-gradient(135deg, rgba(167,139,250,.95), rgba(139,92,246,.95));
-      box-shadow: 0 10px 24px rgba(139,92,246,.22);
-      flex: 0 0 auto;
-    }
-    .brand-text{
-      display:flex;
-      flex-direction:column;
-      line-height: 1.05;
-      min-width:0;
-    }
-    .brand-name{
       font-weight: 800;
-      letter-spacing: .2px;
-      white-space: nowrap;
-    }
-    .brand-tag{
-      font-size: 12px;
-      opacity: .72;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 180px;
+      letter-spacing: 0.02em;
     }
 
-    /* nav */
-    .nav{
-      display:flex;
-      align-items:center;
-      gap: 18px;
-      flex: 1;
-      justify-content: center;
-      min-width: 0;
-    }
-    .nav a{
-      text-decoration:none;
-      color: rgba(255,255,255,.82);
-      font-size: 14px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      white-space: nowrap;
-    }
-    .nav a:hover{ background: rgba(255,255,255,.06); }
-
-    /* CTA */
-    .header-cta{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      flex: 0 0 auto;
-    }
-    .btn-cta{
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 12px 32px rgba(139,92,246,0.35);
       color: #fff;
-      font-weight: 700;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-    }
-    .btn-cta.primary{
-      background: linear-gradient(135deg, rgba(167,139,250,.95), rgba(139,92,246,.95));
-      border: 0;
-      color:#0b1020;
-    }
-
-    /* Mobile: collapse nav into a simple "Menu" */
-    .menu-btn{ display:none; }
-    @media (max-width: 720px){
-      .nav{ display:none; }
-      .menu-btn{ display:inline-flex; }
-      .brand-tag{ max-width: 130px; }
-    }
-
-    /* ===== Sections / Cards ===== */
-    .hero{
-      padding: 46px 0 26px;
-    }
-    .hero-card{
-      background: rgba(11,26,44,.55);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 34px;
-      overflow:hidden;
-      position:relative;
-    }
-    .hero-card:before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background: radial-gradient(700px 220px at 30% 10%, rgba(167,139,250,.18), transparent 60%);
-      pointer-events:none;
-    }
-    h1{
-      margin: 0 0 10px;
-      font-size: clamp(40px, 6vw, 62px);
-      letter-spacing: -0.8px;
-    }
-    .lead{
-      margin: 0 0 22px;
-      color: var(--muted);
-      font-size: clamp(16px, 2vw, 20px);
-      line-height: 1.5;
-      max-width: 860px;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 12px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.78);
-      margin-top: 18px;
-      font-weight: 650;
-    }
-    .dot{
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--purple2), var(--purple));
-      box-shadow: 0 0 20px rgba(139,92,246,.45);
-    }
-
-    .btn-row{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-    .btn{
-      padding: 14px 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      color: white;
-      font-weight: 800;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      min-width: 180px;
-    }
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(167,139,250,.95), rgba(139,92,246,.95));
-      color:#0b1020;
-      border:0;
-    }
-    .btn:hover, .btn-cta:hover{ transform: translateY(-1px); }
-    .subline{
-      margin-top: 14px;
-      color: rgba(255,255,255,.62);
-      font-size: 15px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-      margin-top: 18px;
-    }
-    .card{
-      grid-column: span 6;
-      background: rgba(11,26,44,.55);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-    .card h2{
-      margin: 0 0 12px;
-      font-size: 22px;
-      letter-spacing: -.2px;
-    }
-    .card p{
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .list{
-      margin: 14px 0 0;
-      padding: 0;
-      list-style:none;
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
-    .li{
-      display:flex;
-      gap: 12px;
-      align-items:flex-start;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-    }
-    .check{
-      width: 22px; height: 22px;
-      border-radius: 8px;
-      display:grid; place-items:center;
-      background: rgba(34,197,94,.16);
-      border: 1px solid rgba(34,197,94,.35);
-      color: #9ef5bf;
       font-weight: 900;
-      flex:0 0 auto;
-      margin-top: 1px;
     }
-    .li b{ display:block; margin-bottom: 2px; }
-    .li span{ color: var(--muted2); line-height: 1.45; }
 
-    .mini{
-      display:flex;
-      gap: 10px;
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.78rem;
+      margin-top: 2px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
       flex-wrap: wrap;
-      margin-top: 12px;
     }
-    .tag{
-      padding: 10px 12px;
+
+    .nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 86px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 44px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      color: rgba(255,255,255,.78);
-      font-weight: 650;
-      font-size: 13px;
+      background: rgba(192,132,252,0.12);
+      border: 1px solid rgba(192,132,252,0.18);
+      color: #e8d5ff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    /* responsive */
-    @media (max-width: 900px){
-      .card{ grid-column: span 12; }
-      .hero-card{ padding: 26px; }
-      .btn{ min-width: 160px; }
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(2.6rem, 6vw, 5.3rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
     }
 
-    /* Early access form */
-    .form{
-      margin-top: 12px;
-      display:grid;
+    .hero-lead {
+      max-width: 740px;
+      font-size: clamp(1.04rem, 1.45vw, 1.22rem);
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .core {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      margin-bottom: 28px;
+    }
+
+    .core .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent2);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 0 20px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      box-shadow: 0 18px 42px rgba(139,92,246,0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.10);
+      color: var(--text);
+    }
+
+    .hero-note {
+      color: var(--soft);
+      font-size: 0.94rem;
+    }
+
+    .hero-side {
+      padding: 28px;
+      display: grid;
+      gap: 18px;
+      align-content: center;
+    }
+
+    .mini {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .mini-label {
+      color: var(--soft);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .loop {
+      display: grid;
       gap: 12px;
     }
-    .input{
-      width:100%;
-      padding: 14px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: white;
-      outline:none;
-      font-size: 15px;
+
+    .loop-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
     }
-    .input::placeholder{ color: rgba(255,255,255,.45); }
-    .row{
-      display:grid;
+
+    .loop-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .loop-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .loop-copy strong { font-size: 0.98rem; }
+    .loop-copy span { color: var(--muted); font-size: 0.92rem; }
+
+    .section {
+      padding: 30px 0 80px;
+    }
+
+    .section-head {
+      margin-bottom: 28px;
+      max-width: 780px;
+    }
+
+    .kicker {
+      color: #e8d5ff;
+      font-weight: 800;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 1.03rem;
+      max-width: 760px;
+    }
+
+    .problem-grid,
+    .standard-grid,
+    .invite-grid {
+      display: grid;
+      gap: 18px;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 720px){
-      .row{ grid-template-columns: 1fr; }
     }
 
-    .foot{
-      margin-top: 28px;
-      text-align:center;
-      color: rgba(255,255,255,.5);
-      font-size: 13px;
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--muted);
+    }
+
+    .item strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .quote {
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      min-height: 100%;
+    }
+
+    .bar {
+      width: 72px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    .quote-text {
+      font-size: clamp(1.18rem, 2vw, 1.7rem);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .quote-text strong { color: #fff; }
+
+    .four-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .loop-card {
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(139,92,246,0.18);
+      border: 1px solid rgba(192,132,252,0.18);
+      color: #e8d5ff;
+      font-weight: 900;
+    }
+
+    .loop-card h3 {
+      font-size: 1.16rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0;
+    }
+
+    .loop-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .truth {
+      font-size: clamp(1.4rem, 2.2vw, 2.15rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .truth span { color: #e8d5ff; }
+
+    .points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .point {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--muted);
+    }
+
+    .point-mark {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent2);
+      margin-top: 9px;
+      flex-shrink: 0;
+    }
+
+    .signup-card {
+      display: grid;
+      gap: 18px;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .input {
+      width: 100%;
+      min-height: 56px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 0 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .input:focus {
+      border-color: rgba(192,132,252,0.55);
+      box-shadow: 0 0 0 4px rgba(192,132,252,0.10);
+    }
+
+    .footer {
+      padding: 28px 0 40px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: var(--soft);
+      font-size: 0.94rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .problem-grid,
+      .standard-grid,
+      .invite-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .four-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav { display: none; }
+      .hero { padding-top: 70px; }
+      .hero-main, .hero-side, .card { padding: 22px; }
+      .four-grid { grid-template-columns: 1fr; }
+      .cta-row { flex-direction: column; }
+      .btn { width: 100%; }
     }
   </style>
 </head>
-
 <body>
-
-  <!-- HEADER -->
   <header class="header">
-    <div class="header-inner">
-      <div class="brand">
+    <div class="container header-inner">
+      <a href="#" class="brand" aria-label="Knowledge home">
         <div class="brand-mark">K</div>
-        <div class="brand-text">
-          <div class="brand-name">Knowledge</div>
-          <div class="brand-tag">Built for the standard.</div>
+        <div class="brand-copy">
+          <span>KNOWLEDGE</span>
+          <small>The Place To Think</small>
         </div>
-      </div>
+      </a>
 
-      <nav class="nav">
-        <a href="#core">Core</a>
-        <a href="#proof">Proof</a>
-        <a href="#early">Early Access</a>
-        <a href="#links">Links</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#problem">Problem</a>
+        <a href="#system">System</a>
+        <a href="#standard">Standard</a>
+        <a href="#join">Join</a>
       </nav>
-
-      <div class="header-cta">
-        <a class="btn-cta menu-btn" href="#links">Menu</a>
-        <a class="btn-cta primary" href="#early">Request</a>
-      </div>
     </div>
   </header>
 
-  <div class="wrap">
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="panel hero-main">
+          <div class="eyebrow">Built for the standard</div>
 
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero-card">
-        <h1>Clarity over noise.</h1>
-        <p class="lead">
-          Knowledge is a calm, founder-led platform for <b>learning</b>, <b>growth</b>, and <b>healing</b> —
-          built around outcome-based loops, not vanity metrics.
-        </p>
+          <h1>
+            KNOWLEDGE<br />
+            The Place To Think.
+          </h1>
 
-        <div class="btn-row">
-          <a class="btn primary" href="#early">Join Early Access</a>
-          <a class="btn" href="#proof">See Proof</a>
-          <a class="btn" href="#links">Deck + Demo</a>
-        </div>
+          <p class="hero-lead">
+            Explore ideas. Reflect on them. Apply them in the real world.
+            Verify what actually works.
+          </p>
 
-        <div class="subline">
-          We don’t chase attention. We build systems that hold up — and let results speak.
-        </div>
-
-        <div class="pill">
-          <span class="dot"></span>
-          Founder-led • Aligned access • Build-to-standard
-        </div>
-      </div>
-    </section>
-
-    <!-- CORE -->
-    <section class="grid" id="core">
-      <div class="card">
-        <h2>The Core</h2>
-        <p>These are the four non-negotiables behind Knowledge.</p>
-
-        <ul class="list">
-          <li class="li">
-            <div class="check">✓</div>
-            <div>
-              <b>Clarity</b>
-              <span>Quiet UI. No performative mechanics. Designed for repeat use.</span>
-            </div>
-          </li>
-          <li class="li">
-            <div class="check">✓</div>
-            <div>
-              <b>Learning</b>
-              <span>Real loops: capture → reflect → apply → return. Build what actually sticks.</span>
-            </div>
-          </li>
-          <li class="li">
-            <div class="check">✓</div>
-            <div>
-              <b>Healing</b>
-              <span>Private by default. Reflection-first. Progress without scores.</span>
-            </div>
-          </li>
-          <li class="li">
-            <div class="check">✓</div>
-            <div>
-              <b>Growth</b>
-              <span>Outcome-based momentum. We prioritize people who move with intention.</span>
-            </div>
-          </li>
-        </ul>
-
-        <div class="mini">
-          <span class="tag">No vanity metrics</span>
-          <span class="tag">Founder-led</span>
-          <span class="tag">Outcome-based</span>
-        </div>
-      </div>
-
-      <!-- PROOF -->
-      <div class="card" id="proof">
-        <h2>Proof</h2>
-        <p>
-          We don’t talk. We show. Watch the Loom demo and see the product direction.
-        </p>
-
-        <div class="btn-row" style="margin-top:14px;">
-          <a class="btn primary" href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc" target="_blank" rel="noopener">Watch Demo (Loom)</a>
-          <a class="btn" href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd" target="_blank" rel="noopener">Open Deck</a>
-        </div>
-
-        <div class="subline" style="margin-top:10px;">
-          Standard doesn’t look like the standard at first — because the market rewards noise.
-        </div>
-      </div>
-    </section>
-
-    <!-- EARLY ACCESS -->
-    <section class="grid" id="early">
-      <div class="card" style="grid-column: span 12;">
-        <h2>Request Early Access</h2>
-        <p>Aligned access only. One line is optional — keep it simple.</p>
-
-        <!-- NO "destination" text anywhere. This uses mailto to open user's email app. -->
-        <form class="form" id="earlyForm">
-          <div class="row">
-            <input class="input" type="email" id="email" placeholder="Email" required />
-            <input class="input" type="text" id="line" placeholder="One line (optional): What do you want Knowledge to help you do?" />
+          <div class="core" aria-label="Knowledge core">
+            <span>Learn</span>
+            <span class="dot"></span>
+            <span>Grow</span>
+            <span class="dot"></span>
+            <span>Heal</span>
+            <span class="dot"></span>
+            <span>Truth</span>
           </div>
 
-          <button class="btn primary" type="submit" style="border-radius:16px; cursor:pointer;">
-            Send Early Access Request
-          </button>
-
-          <button class="btn" type="button" id="copyBtn" style="border-radius:16px; cursor:pointer;">
-            Copy message
-          </button>
-
-          <div class="subline">
-            What happens next: We review requests manually. The goal is alignment — people who value clarity, depth, and outcomes.
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#join">Join Early Access</a>
+            <a
+              class="btn btn-secondary"
+              href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc"
+              target="_blank"
+              rel="noopener noreferrer"
+            >See Demo</a>
+            <a
+              class="btn btn-secondary"
+              href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Proof Deck</a>
           </div>
-        </form>
-      </div>
-    </section>
 
-    <!-- LINKS -->
-    <section class="grid" id="links">
-      <div class="card" style="grid-column: span 12;">
-        <h2>Links</h2>
-        <p>Everything in one place.</p>
+          <p class="hero-note">
+            A calm environment for deeper thinking, real reflection, and knowledge that lasts.
+          </p>
+        </div>
 
-        <div class="btn-row" style="margin-top:14px;">
-          <a class="btn primary" href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc" target="_blank" rel="noopener">Demo (Loom)</a>
-          <a class="btn" href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd" target="_blank" rel="noopener">Pitch Deck</a>
-          <a class="btn" href="https://www.linkedin.com/in/founder-knowledge-b05b163a2?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a>
+        <div class="panel hero-side">
+          <div class="mini">
+            <div class="mini-label">The Knowledge Loop</div>
+            <div class="loop">
+              <div class="loop-step">
+                <div class="loop-num">1</div>
+                <div class="loop-copy">
+                  <strong>Learn</strong>
+                  <span>Explore an idea worth holding.</span>
+                </div>
+              </div>
+              <div class="loop-step">
+                <div class="loop-num">2</div>
+                <div class="loop-copy">
+                  <strong>Reflect</strong>
+                  <span>Think through what it means.</span>
+                </div>
+              </div>
+              <div class="loop-step">
+                <div class="loop-num">3</div>
+                <div class="loop-copy">
+                  <strong>Apply</strong>
+                  <span>Use it in the real world.</span>
+                </div>
+              </div>
+              <div class="loop-step">
+                <div class="loop-num">4</div>
+                <div class="loop-copy">
+                  <strong>Verify</strong>
+                  <span>See what actually works.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="mini-label">What Knowledge rejects</div>
+            <p class="hero-note" style="margin:0;">
+              Noise. Speed without thought. Attention for attention’s sake.
+              Knowledge is built for outcomes, not vanity.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="foot">© 2026 Knowledge. Built for the standard.</div>
-  </div>
+    <section class="section" id="problem">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Problem</div>
+          <h2>The internet rewards reaction.</h2>
+          <p class="sub">
+            Most platforms optimize for attention. Ideas move fast. Thought moves slow.
+            The result is noise, speed, and shallow interaction.
+          </p>
+        </div>
+
+        <div class="problem-grid">
+          <div class="card">
+            <div class="stack">
+              <div class="item">
+                <strong>Attention first</strong>
+                Likes, views, and algorithms decide what rises.
+              </div>
+              <div class="item">
+                <strong>Reaction over reflection</strong>
+                People respond before they fully think.
+              </div>
+              <div class="item">
+                <strong>Information without application</strong>
+                Ideas are consumed, then forgotten.
+              </div>
+            </div>
+          </div>
+
+          <div class="card quote">
+            <div class="bar"></div>
+            <div class="quote-text">
+              <strong>Knowledge was built to change that.</strong><br />
+              A place where ideas are not measured by noise, but by what they produce in real life.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="system">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">System</div>
+          <h2>The Knowledge Loop</h2>
+          <p class="sub">
+            Knowledge is structured around a simple process: learn, reflect, apply, and verify.
+            That is how ideas last.
+          </p>
+        </div>
+
+        <div class="four-grid">
+          <div class="card loop-card">
+            <div class="badge">1</div>
+            <h3>Learn</h3>
+            <p>Discover an idea worth keeping. Not noise. Not speed. Something worth thinking through.</p>
+          </div>
+
+          <div class="card loop-card">
+            <div class="badge">2</div>
+            <h3>Reflect</h3>
+            <p>Slow down and examine it. Reflection gives the idea weight and direction.</p>
+          </div>
+
+          <div class="card loop-card">
+            <div class="badge">3</div>
+            <h3>Apply</h3>
+            <p>Move it into real life. Knowledge only becomes real when it changes behavior.</p>
+          </div>
+
+          <div class="card loop-card">
+            <div class="badge">4</div>
+            <h3>Verify</h3>
+            <p>See what actually worked. The goal is not attention. The goal is outcomes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="standard">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Standard</div>
+          <h2>Learn → Grow → Heal → Truth</h2>
+          <p class="sub">
+            This is the philosophy behind Knowledge. Not a slogan. A standard.
+          </p>
+        </div>
+
+        <div class="standard-grid">
+          <div class="card">
+            <div class="truth">
+              When people <span>learn</span>, they grow.<br />
+              When they <span>grow</span>, they heal.<br />
+              When they <span>heal</span>, they begin to understand the truth.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="points">
+              <div class="point">
+                <div class="point-mark"></div>
+                <div>Knowledge is for people who want to think deeper.</div>
+              </div>
+              <div class="point">
+                <div class="point-mark"></div>
+                <div>Ideas should be explored, not rushed past.</div>
+              </div>
+              <div class="point">
+                <div class="point-mark"></div>
+                <div>Application matters more than reaction.</div>
+              </div>
+              <div class="point">
+                <div class="point-mark"></div>
+                <div>What lasts is what works in real life.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="join">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Invitation</div>
+          <h2>A different kind of platform</h2>
+          <p class="sub">
+            A place for people who want to think, reflect, apply, and see what actually works.
+          </p>
+        </div>
+
+        <div class="invite-grid">
+          <div class="card">
+            <div class="signup-card">
+              <h3 style="font-size:1.4rem; margin-bottom:0;">Join Early Access</h3>
+              <p class="sub" style="font-size:1rem; margin:0; max-width:none;">
+                Join the first group entering Knowledge.
+              </p>
+
+              <form class="signup-form" action="https://formsubmit.co/founder@knowledge-app.com" method="POST">
+                <input type="hidden" name="_subject" value="New Knowledge Early Access Signup" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+
+                <div>
+                  <label class="label" for="email">Email</label>
+                  <input
+                    class="input"
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+
+                <button class="btn btn-primary" type="submit">Join Early Access</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="font-size:1.4rem;">Proof</h3>
+            <p class="sub" style="font-size:1rem; max-width:none;">
+              If you want to go deeper, start here.
+            </p>
+
+            <div class="stack" style="margin-top:18px;">
+              <a
+                class="item"
+                href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>Demo</strong>
+                Watch the product walkthrough
+              </a>
+
+              <a
+                class="item"
+                href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>Deck</strong>
+                Read the proof deck
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Knowledge. The Place To Think.</div>
+      <div></div>
+    </div>
+  </footer>
 
   <script>
-    // Early Access: clean mailto flow (no destination text shown on page)
-    const DEST_EMAIL = "founder@knowledge-app.com";
-
-    function buildMessage(email, line){
-      const oneLine = (line || "").trim();
-      return [
-        "Early Access Request — Knowledge",
-        "",
-        "Email: " + (email || ""),
-        "One line: " + (oneLine ? oneLine : "(none)"),
-        "",
-        "Built for the standard."
-      ].join("\n");
-    }
-
-    document.getElementById("earlyForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value.trim();
-      const line  = document.getElementById("line").value.trim();
-
-      const subject = encodeURIComponent("Early Access Request — Knowledge");
-      const body = encodeURIComponent(buildMessage(email, line));
-      // opens user’s mail app
-      window.location.href = `mailto:${DEST_EMAIL}?subject=${subject}&body=${body}`;
-    });
-
-    document.getElementById("copyBtn").addEventListener("click", async () => {
-      const email = document.getElementById("email").value.trim();
-      const line  = document.getElementById("line").value.trim();
-      const msg = buildMessage(email, line);
-
-      try{
-        await navigator.clipboard.writeText(msg);
-        alert("Copied.");
-      }catch(err){
-        // fallback
-        const ta = document.createElement("textarea");
-        ta.value = msg;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-        alert("Copied.");
-      }
-    });
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
