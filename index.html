@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1NM8Z4DEE9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NM8Z4DEE9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1NM8Z4DEE9');
+  </script>
 
-  gtag('config', 'G-1NM8Z4DEE9');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Knowledge — The Place To Think</title>
@@ -23,7 +23,15 @@
     content="Explore ideas. Reflect on them. Apply them in the real world. Verify what actually works."
   />
   <meta property="og:type" content="website" />
+
   <meta name="theme-color" content="#0b0615" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- Font: Inter (prevents “flat” desktop fallback look) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #090510;
@@ -40,20 +48,31 @@
       --max: 1160px;
       --radius: 24px;
       --shadow: 0 24px 70px rgba(0,0,0,0.35);
+      color-scheme: dark;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; height: 100%; background-color: var(--bg); }
 
     body {
       margin: 0;
+      min-height: 100%;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
+
+      /* Stronger, more “mobile-like” glow for desktop */
       background:
-        radial-gradient(circle at top left, rgba(139,92,246,0.24), transparent 30%),
-        radial-gradient(circle at top right, rgba(192,132,252,0.18), transparent 25%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 45%, var(--bg) 100%);
+        radial-gradient(circle at 14% 10%, rgba(139,92,246,0.34), transparent 38%),
+        radial-gradient(circle at 88% 8%, rgba(192,132,252,0.26), transparent 34%),
+        radial-gradient(circle at 60% 92%, rgba(91,33,182,0.20), transparent 42%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 46%, var(--bg) 100%);
+
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      /* Guard against extension/OS grayscale filters */
+      filter: none !important;
     }
 
     a {
@@ -520,8 +539,16 @@
       .cta-row { flex-direction: column; }
       .btn { width: 100%; }
     }
+
+    /* Windows/Edge high-contrast: avoid forced black/white nuking gradients */
+    @media (forced-colors: active) {
+      * { forced-color-adjust: none; }
+      body { background: Canvas; color: CanvasText; }
+      .panel, .card, .mini, .item { border: 1px solid CanvasText; }
+    }
   </style>
 </head>
+
 <body>
   <header class="header">
     <div class="container header-inner">
