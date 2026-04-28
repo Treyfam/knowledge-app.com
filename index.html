@@ -1,83 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) — kept from your old landing page -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NM8Z4DEE9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-1NM8Z4DEE9');
+    gtag("js", new Date());
+    gtag("config", "G-1NM8Z4DEE9");
   </script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Knowledge — The Place To Think</title>
+
   <meta
     name="description"
-    content="Knowledge is the place to think. Explore ideas, reflect on them, apply them in the real world, and verify what actually works."
+    content="Knowledge is the place to think — a new standard for turning learning into reflection, action, healing, and verified real-world change."
   />
+
   <meta property="og:title" content="Knowledge — The Place To Think" />
   <meta
     property="og:description"
-    content="Explore ideas. Reflect on them. Apply them in the real world. Verify what actually works."
+    content="Turn what you learn into something real. Request early access to Knowledge."
   />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://knowledge-app.com" />
 
-  <meta name="theme-color" content="#0b0615" />
+  <meta name="theme-color" content="#090510" />
   <meta name="color-scheme" content="dark" />
 
-  <!-- Font: Inter (prevents “flat” desktop fallback look) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Font kept from old code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     :root {
       --bg: #090510;
       --bg2: #12091f;
-      --card: rgba(255,255,255,0.04);
-      --card2: rgba(255,255,255,0.06);
-      --line: rgba(255,255,255,0.08);
-      --text: #f6f1ff;
+      --bg3: #07030d;
+      --card: rgba(255, 255, 255, 0.045);
+      --card2: rgba(255, 255, 255, 0.07);
+      --line: rgba(255, 255, 255, 0.105);
+      --text: #f7f1ff;
       --muted: #cbbce6;
       --soft: #9f93bb;
       --accent: #8b5cf6;
       --accent2: #c084fc;
       --accent3: #5b21b6;
+      --white: #ffffff;
       --max: 1160px;
-      --radius: 24px;
-      --shadow: 0 24px 70px rgba(0,0,0,0.35);
+      --radius: 28px;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
       color-scheme: dark;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; height: 100%; background-color: var(--bg); }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      height: 100%;
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
     body {
       margin: 0;
       min-height: 100%;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
       color: var(--text);
-
-      /* Stronger, more “mobile-like” glow for desktop */
       background:
-        radial-gradient(circle at 14% 10%, rgba(139,92,246,0.34), transparent 38%),
-        radial-gradient(circle at 88% 8%, rgba(192,132,252,0.26), transparent 34%),
-        radial-gradient(circle at 60% 92%, rgba(91,33,182,0.20), transparent 42%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 46%, var(--bg) 100%);
-
+        radial-gradient(circle at 14% 10%, rgba(139, 92, 246, 0.36), transparent 38%),
+        radial-gradient(circle at 88% 8%, rgba(192, 132, 252, 0.27), transparent 34%),
+        radial-gradient(circle at 50% 95%, rgba(91, 33, 182, 0.24), transparent 43%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 46%, var(--bg3) 100%);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-
-      /* Guard against extension/OS grayscale filters */
+      overflow-x: hidden;
       filter: none !important;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: radial-gradient(circle at center, black, transparent 76%);
+      z-index: -1;
     }
 
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
     }
 
     .container {
@@ -89,9 +128,9 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(9, 5, 16, 0.7);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(16px);
+      background: rgba(9, 5, 16, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .header-inner {
@@ -99,25 +138,27 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 18px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 0.02em;
     }
 
     .brand-mark {
       width: 40px;
       height: 40px;
-      border-radius: 50%;
+      border-radius: 16px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 12px 32px rgba(139,92,246,0.35);
+      background:
+        radial-gradient(circle at 34% 26%, #fff, transparent 13%),
+        linear-gradient(135deg, var(--accent), var(--accent3));
+      box-shadow: 0 12px 34px rgba(139, 92, 246, 0.38);
       color: #fff;
       font-weight: 900;
     }
@@ -130,88 +171,149 @@
 
     .brand-copy small {
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.78rem;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .nav {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
     .nav a {
       color: var(--muted);
       font-size: 0.95rem;
-      transition: color 0.2s ease;
+      transition: color 0.2s ease, transform 0.2s ease;
     }
 
     .nav a:hover {
       color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--white), #d8ccff);
+      color: #10091f !important;
+      font-weight: 900;
     }
 
     .hero {
-      padding: 86px 0 56px;
+      padding: 86px 0 58px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 24px;
       align-items: stretch;
     }
 
     .panel {
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.058), rgba(255, 255, 255, 0.025)),
+        rgba(255, 255, 255, 0.02);
       border: 1px solid var(--line);
-      border-radius: 30px;
+      border-radius: 32px;
       box-shadow: var(--shadow);
     }
 
     .hero-main {
-      padding: 44px;
+      padding: 46px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -90px;
+      top: -90px;
+      background: rgba(192, 132, 252, 0.18);
+      filter: blur(45px);
+      border-radius: 50%;
+      pointer-events: none;
     }
 
     .eyebrow {
+      position: relative;
+      z-index: 1;
       display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(192,132,252,0.12);
-      border: 1px solid rgba(192,132,252,0.18);
-      color: #e8d5ff;
+      background: rgba(192, 132, 252, 0.12);
+      border: 1px solid rgba(192, 132, 252, 0.22);
+      color: #ead9ff;
       font-size: 0.82rem;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
-    h1, h2, h3, p { margin-top: 0; }
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent2);
+      box-shadow: 0 0 0 8px rgba(192, 132, 252, 0.13);
+    }
 
     h1 {
-      margin: 22px 0 18px;
-      font-size: clamp(2.6rem, 6vw, 5.3rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
+      position: relative;
+      z-index: 1;
+      margin: 22px 0 20px;
+      font-size: clamp(2.85rem, 6.25vw, 5.75rem);
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+      max-width: 830px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #ffffff, #e3d8ff 42%, var(--accent2) 86%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-lead {
-      max-width: 740px;
-      font-size: clamp(1.04rem, 1.45vw, 1.22rem);
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      font-size: clamp(1.04rem, 1.45vw, 1.23rem);
       color: var(--muted);
-      margin-bottom: 24px;
+      margin-bottom: 18px;
+    }
+
+    .hero-lead strong {
+      color: var(--text);
+      font-weight: 900;
     }
 
     .core {
+      position: relative;
+      z-index: 1;
       display: inline-flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 12px;
-      font-weight: 800;
-      margin-bottom: 28px;
+      font-weight: 900;
+      margin: 10px 0 30px;
+    }
+
+    .core span:not(.dot) {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(192, 132, 252, 0.12);
+      border: 1px solid rgba(192, 132, 252, 0.18);
+      color: #f0e4ff;
     }
 
     .core .dot {
@@ -219,9 +321,13 @@
       height: 5px;
       border-radius: 50%;
       background: var(--accent2);
+      padding: 0;
+      border: none;
     }
 
     .cta-row {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
@@ -229,36 +335,52 @@
     }
 
     .btn {
-      min-height: 52px;
-      padding: 0 20px;
+      min-height: 54px;
+      padding: 0 22px;
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      font-weight: 800;
+      font-weight: 900;
       border: 1px solid transparent;
-      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
       cursor: pointer;
+      font-size: 1rem;
+      white-space: nowrap;
     }
 
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff;
-      box-shadow: 0 18px 42px rgba(139,92,246,0.28);
+      background: linear-gradient(135deg, #ffffff, #d8ccff);
+      color: #10091f;
+      box-shadow: 0 18px 42px rgba(139, 92, 246, 0.28);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 24px 54px rgba(139, 92, 246, 0.36);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.03);
-      border-color: rgba(255,255,255,0.10);
+      background: rgba(255, 255, 255, 0.035);
+      border-color: rgba(255, 255, 255, 0.11);
       color: var(--text);
     }
 
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.07);
+    }
+
     .hero-note {
+      position: relative;
+      z-index: 1;
       color: var(--soft);
       font-size: 0.94rem;
+      margin-bottom: 0;
+      max-width: 620px;
     }
 
     .hero-side {
@@ -269,7 +391,7 @@
     }
 
     .mini {
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.042);
       border: 1px solid var(--line);
       border-radius: 24px;
       padding: 22px;
@@ -279,8 +401,8 @@
       color: var(--soft);
       font-size: 0.82rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      font-weight: 800;
+      letter-spacing: 0.05em;
+      font-weight: 900;
       margin-bottom: 12px;
     }
 
@@ -295,8 +417,8 @@
       gap: 12px;
       padding: 12px 14px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255, 255, 255, 0.034);
+      border: 1px solid rgba(255, 255, 255, 0.065);
     }
 
     .loop-num {
@@ -317,50 +439,64 @@
       gap: 2px;
     }
 
-    .loop-copy strong { font-size: 0.98rem; }
-    .loop-copy span { color: var(--muted); font-size: 0.92rem; }
+    .loop-copy strong {
+      font-size: 0.98rem;
+    }
+
+    .loop-copy span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
 
     .section {
-      padding: 30px 0 80px;
+      padding: 34px 0 82px;
     }
 
     .section-head {
       margin-bottom: 28px;
-      max-width: 780px;
+      max-width: 820px;
     }
 
     .kicker {
-      color: #e8d5ff;
-      font-weight: 800;
+      color: #ead9ff;
+      font-weight: 900;
       font-size: 0.82rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       margin-bottom: 10px;
     }
 
     h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.1rem, 4.2vw, 3.65rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
       margin-bottom: 14px;
+    }
+
+    h3 {
+      letter-spacing: -0.035em;
     }
 
     .sub {
       color: var(--muted);
-      font-size: 1.03rem;
+      font-size: 1.04rem;
       max-width: 760px;
+      margin-bottom: 0;
     }
 
     .problem-grid,
     .standard-grid,
-    .invite-grid {
+    .invite-grid,
+    .demo-grid {
       display: grid;
       gap: 18px;
       grid-template-columns: 1fr 1fr;
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.025)),
+        rgba(255, 255, 255, 0.02);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 28px;
@@ -375,8 +511,8 @@
     .item {
       padding: 16px 18px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255, 255, 255, 0.033);
+      border: 1px solid rgba(255, 255, 255, 0.065);
       color: var(--muted);
     }
 
@@ -403,10 +539,12 @@
     .quote-text {
       font-size: clamp(1.18rem, 2vw, 1.7rem);
       line-height: 1.2;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
     }
 
-    .quote-text strong { color: #fff; }
+    .quote-text strong {
+      color: #fff;
+    }
 
     .four-grid {
       display: grid;
@@ -415,27 +553,48 @@
     }
 
     .loop-card {
-      min-height: 230px;
+      min-height: 240px;
       display: flex;
       flex-direction: column;
       gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loop-card::after {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      right: -50px;
+      top: -50px;
+      background: rgba(192, 132, 252, 0.12);
+      border-radius: 50%;
+      filter: blur(18px);
     }
 
     .badge {
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
+      width: 48px;
+      height: 48px;
+      border-radius: 17px;
       display: grid;
       place-items: center;
-      background: rgba(139,92,246,0.18);
-      border: 1px solid rgba(192,132,252,0.18);
-      color: #e8d5ff;
+      background: rgba(139, 92, 246, 0.2);
+      border: 1px solid rgba(192, 132, 252, 0.2);
+      color: #ead9ff;
       font-weight: 900;
+      position: relative;
+      z-index: 1;
+    }
+
+    .loop-card h3,
+    .loop-card p {
+      position: relative;
+      z-index: 1;
     }
 
     .loop-card h3 {
-      font-size: 1.16rem;
-      letter-spacing: -0.02em;
+      font-size: 1.22rem;
       margin-bottom: 0;
     }
 
@@ -447,10 +606,12 @@
     .truth {
       font-size: clamp(1.4rem, 2.2vw, 2.15rem);
       line-height: 1.08;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.045em;
     }
 
-    .truth span { color: #e8d5ff; }
+    .truth span {
+      color: #ead9ff;
+    }
 
     .points {
       display: grid;
@@ -473,9 +634,133 @@
       flex-shrink: 0;
     }
 
+    .quiet-box {
+      text-align: center;
+      padding: 48px 30px;
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at center top, rgba(192, 132, 252, 0.18), transparent 44%),
+        rgba(255, 255, 255, 0.038);
+      box-shadow: var(--shadow);
+    }
+
+    .quiet-box h2 {
+      margin-bottom: 14px;
+    }
+
+    .reject-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .reject-pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.052);
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.095);
+      font-weight: 800;
+    }
+
+    .audience-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .audience-card {
+      min-height: 185px;
+    }
+
+    .audience-card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .audience-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+
+    .visual-proof {
+      min-height: 390px;
+      border-radius: 32px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(192, 132, 252, 0.24), transparent 25%),
+        radial-gradient(circle at 70% 62%, rgba(91, 33, 182, 0.2), transparent 29%),
+        rgba(255, 255, 255, 0.04);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .orbit {
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+    }
+
+    .orbit.one {
+      width: 290px;
+      height: 290px;
+    }
+
+    .orbit.two {
+      width: 430px;
+      height: 430px;
+      opacity: 0.55;
+    }
+
+    .core-visual {
+      position: relative;
+      width: 172px;
+      height: 172px;
+      border-radius: 46px;
+      background:
+        radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.86), transparent 12%),
+        linear-gradient(135deg, rgba(192, 132, 252, 0.95), rgba(91, 33, 182, 0.95));
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      box-shadow: 0 22px 70px rgba(139, 92, 246, 0.34);
+    }
+
+    .shard {
+      position: absolute;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .shard.a { top: 38px; left: 50px; }
+    .shard.b { top: 74px; right: 42px; }
+    .shard.c { bottom: 58px; left: 42px; }
+    .shard.d { bottom: 42px; right: 62px; }
+
     .signup-card {
       display: grid;
       gap: 18px;
+    }
+
+    .signup-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 4px;
     }
 
     .label {
@@ -483,29 +768,50 @@
       margin-bottom: 8px;
       color: var(--muted);
       font-size: 0.94rem;
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    .input {
+    .input,
+    .textarea {
       width: 100%;
-      min-height: 56px;
       border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      background: rgba(255, 255, 255, 0.045);
       color: var(--text);
       padding: 0 16px;
       font-size: 1rem;
+      font-family: inherit;
       outline: none;
     }
 
-    .input:focus {
-      border-color: rgba(192,132,252,0.55);
-      box-shadow: 0 0 0 4px rgba(192,132,252,0.10);
+    .input {
+      min-height: 56px;
+    }
+
+    .textarea {
+      min-height: 116px;
+      padding-top: 14px;
+      resize: vertical;
+    }
+
+    .input:focus,
+    .textarea:focus {
+      border-color: rgba(192, 132, 252, 0.58);
+      box-shadow: 0 0 0 4px rgba(192, 132, 252, 0.1);
+    }
+
+    ::placeholder {
+      color: rgba(203, 188, 230, 0.62);
+    }
+
+    .proof-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
     }
 
     .footer {
       padding: 28px 0 40px;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255, 255, 255, 0.065);
       color: var(--soft);
       font-size: 0.94rem;
     }
@@ -522,29 +828,122 @@
       .hero-grid,
       .problem-grid,
       .standard-grid,
-      .invite-grid {
+      .invite-grid,
+      .demo-grid {
         grid-template-columns: 1fr;
       }
 
       .four-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .audience-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-side {
+        max-width: 620px;
+        margin: 0 auto;
+        width: 100%;
+      }
     }
 
     @media (max-width: 720px) {
-      .nav { display: none; }
-      .hero { padding-top: 70px; }
-      .hero-main, .hero-side, .card { padding: 22px; }
-      .four-grid { grid-template-columns: 1fr; }
-      .cta-row { flex-direction: column; }
-      .btn { width: 100%; }
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .nav a:not(.nav-cta) {
+        display: none;
+      }
+
+      .nav-cta {
+        padding: 9px 13px;
+        font-size: 0.88rem !important;
+      }
+
+      .brand-copy small {
+        display: none;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 14px;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .card {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 14vw, 5.1rem);
+      }
+
+      .hero-lead {
+        font-size: 1.04rem;
+      }
+
+      .cta-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .four-grid,
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .loop-card {
+        min-height: auto;
+      }
+
+      .section {
+        padding: 28px 0 62px;
+      }
+
+      .quiet-box {
+        padding: 36px 20px;
+      }
+
+      .visual-proof {
+        min-height: 320px;
+      }
+
+      .shard {
+        display: none;
+      }
     }
 
-    /* Windows/Edge high-contrast: avoid forced black/white nuking gradients */
     @media (forced-colors: active) {
-      * { forced-color-adjust: none; }
-      body { background: Canvas; color: CanvasText; }
-      .panel, .card, .mini, .item { border: 1px solid CanvasText; }
+      * {
+        forced-color-adjust: none;
+      }
+
+      body {
+        background: Canvas;
+        color: CanvasText;
+      }
+
+      .panel,
+      .card,
+      .mini,
+      .item {
+        border: 1px solid CanvasText;
+      }
     }
   </style>
 </head>
@@ -561,28 +960,38 @@
       </a>
 
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#problem">Problem</a>
-        <a href="#system">System</a>
+        <a href="#how">How it works</a>
         <a href="#standard">Standard</a>
-        <a href="#join">Join</a>
+        <a href="#who">Who it’s for</a>
+        <a href="#proof">Proof</a>
+        <a class="nav-cta" href="#join">Early Access</a>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
       <div class="container hero-grid">
         <div class="panel hero-main">
-          <div class="eyebrow">Built for the standard</div>
+          <div class="eyebrow">
+            <span class="pulse"></span>
+            The first circle is forming
+          </div>
 
           <h1>
-            KNOWLEDGE<br />
-            The Place To Think.
+            Turn what you learn into
+            <span class="gradient-text">something real.</span>
           </h1>
 
           <p class="hero-lead">
-            Explore ideas. Reflect on them. Apply them in the real world.
-            Verify what actually works.
+            <strong>Knowledge is the place to think</strong> — a new standard for learning,
+            reflection, healing, and truth.
+          </p>
+
+          <p class="hero-lead">
+            Most apps help you consume more. Knowledge helps you return to what matters,
+            reflect on it, apply it, and verify what actually changed.
           </p>
 
           <div class="core" aria-label="Knowledge core">
@@ -596,80 +1005,111 @@
           </div>
 
           <div class="cta-row">
-            <a class="btn btn-primary" href="#join">Join Early Access</a>
-            <a
-              class="btn btn-secondary"
-              href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc"
-              target="_blank"
-              rel="noopener noreferrer"
-            >See Demo</a>
-            <a
-              class="btn btn-secondary"
-              href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd"
-              target="_blank"
-              rel="noopener noreferrer"
-            >Proof Deck</a>
+            <a class="btn btn-primary" href="#join">Request Early Access →</a>
           </div>
 
           <p class="hero-note">
-            A calm environment for deeper thinking, real reflection, and knowledge that lasts.
+            Early access is for serious thinkers, reflective learners, and people tired of shallow content.
           </p>
         </div>
 
-        <div class="panel hero-side">
+        <div class="panel hero-side" aria-label="Knowledge product loop preview">
           <div class="mini">
             <div class="mini-label">The Knowledge Loop</div>
             <div class="loop">
               <div class="loop-step">
                 <div class="loop-num">1</div>
                 <div class="loop-copy">
-                  <strong>Learn</strong>
-                  <span>Explore an idea worth holding.</span>
+                  <strong>Scroll</strong>
+                  <span>Save what matters.</span>
                 </div>
               </div>
+
               <div class="loop-step">
                 <div class="loop-num">2</div>
                 <div class="loop-copy">
-                  <strong>Reflect</strong>
-                  <span>Think through what it means.</span>
+                  <strong>Mirror</strong>
+                  <span>Reflect on what it means.</span>
                 </div>
               </div>
+
               <div class="loop-step">
                 <div class="loop-num">3</div>
                 <div class="loop-copy">
-                  <strong>Apply</strong>
-                  <span>Use it in the real world.</span>
+                  <strong>Jewel</strong>
+                  <span>Mark what you intend to apply.</span>
                 </div>
               </div>
+
               <div class="loop-step">
                 <div class="loop-num">4</div>
                 <div class="loop-copy">
-                  <strong>Verify</strong>
-                  <span>See what actually works.</span>
+                  <strong>Purple Jewel</strong>
+                  <span>Verify what became real.</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="mini">
-            <div class="mini-label">What Knowledge rejects</div>
-            <p class="hero-note" style="margin:0;">
-              Noise. Speed without thought. Attention for attention’s sake.
-              Knowledge is built for outcomes, not vanity.
+            <div class="mini-label">What you get</div>
+            <p class="hero-note">
+              A calm system for turning ideas into reflection, reflection into action,
+              and action into verified growth.
             </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">How Knowledge works</div>
+          <h2>A simple loop for turning ideas into growth you can return to.</h2>
+          <p class="sub">
+            Knowledge is not built around likes, trends, or public performance.
+            It is built around what happens after an idea reaches you.
+          </p>
+        </div>
+
+        <div class="four-grid">
+          <div class="card loop-card">
+            <div class="badge">1</div>
+            <h3>Scroll</h3>
+            <p>Save the ideas, lessons, and signals you do not want to lose.</p>
+          </div>
+
+          <div class="card loop-card">
+            <div class="badge">2</div>
+            <h3>Mirror</h3>
+            <p>Reflect privately so the idea connects to your actual life.</p>
+          </div>
+
+          <div class="card loop-card">
+            <div class="badge">3</div>
+            <h3>Jewel</h3>
+            <p>Mark the thought, lesson, or truth you intend to apply.</p>
+          </div>
+
+          <div class="card loop-card">
+            <div class="badge">4</div>
+            <h3>Purple Jewel</h3>
+            <p>Verify when an idea created a real-world result.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAIN -->
     <section class="section" id="problem">
       <div class="container">
         <div class="section-head">
-          <div class="kicker">Problem</div>
-          <h2>The internet rewards reaction.</h2>
+          <div class="kicker">The pain</div>
+          <h2>You were never missing more content.</h2>
           <p class="sub">
-            Most platforms optimize for attention. Ideas move fast. Thought moves slow.
-            The result is noise, speed, and shallow interaction.
+            You were missing a place to think through what already reached you.
           </p>
         </div>
 
@@ -677,16 +1117,18 @@
           <div class="card">
             <div class="stack">
               <div class="item">
-                <strong>Attention first</strong>
-                Likes, views, and algorithms decide what rises.
+                <strong>Most feeds move too fast.</strong>
+                Good ideas disappear before they become useful.
               </div>
+
               <div class="item">
-                <strong>Reaction over reflection</strong>
-                People respond before they fully think.
+                <strong>Saved posts get buried.</strong>
+                The things that mattered become hard to find again.
               </div>
+
               <div class="item">
-                <strong>Information without application</strong>
-                Ideas are consumed, then forgotten.
+                <strong>Advice gets consumed and forgotten.</strong>
+                The internet gives people more information, but not always more clarity.
               </div>
             </div>
           </div>
@@ -702,52 +1144,35 @@
       </div>
     </section>
 
-    <section class="section" id="system">
+    <!-- STANDARD -->
+    <section class="section" id="standard">
       <div class="container">
-        <div class="section-head">
-          <div class="kicker">System</div>
-          <h2>The Knowledge Loop</h2>
-          <p class="sub">
-            Knowledge is structured around a simple process: learn, reflect, apply, and verify.
-            That is how ideas last.
+        <div class="quiet-box">
+          <div class="kicker">The standard after attention</div>
+          <h2>The internet is loud. This is not.</h2>
+          <p class="sub" style="margin: 0 auto;">
+            Knowledge is built for depth, clarity, and real transformation —
+            not attention games.
           </p>
-        </div>
 
-        <div class="four-grid">
-          <div class="card loop-card">
-            <div class="badge">1</div>
-            <h3>Learn</h3>
-            <p>Discover an idea worth keeping. Not noise. Not speed. Something worth thinking through.</p>
-          </div>
-
-          <div class="card loop-card">
-            <div class="badge">2</div>
-            <h3>Reflect</h3>
-            <p>Slow down and examine it. Reflection gives the idea weight and direction.</p>
-          </div>
-
-          <div class="card loop-card">
-            <div class="badge">3</div>
-            <h3>Apply</h3>
-            <p>Move it into real life. Knowledge only becomes real when it changes behavior.</p>
-          </div>
-
-          <div class="card loop-card">
-            <div class="badge">4</div>
-            <h3>Verify</h3>
-            <p>See what actually worked. The goal is not attention. The goal is outcomes.</p>
+          <div class="reject-list">
+            <span class="reject-pill">No like counts</span>
+            <span class="reject-pill">No trending chaos</span>
+            <span class="reject-pill">No public performance</span>
+            <span class="reject-pill">No empty scrolling</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="standard">
+    <!-- PHILOSOPHY -->
+    <section class="section">
       <div class="container">
         <div class="section-head">
-          <div class="kicker">Standard</div>
+          <div class="kicker">Philosophy</div>
           <h2>Learn → Grow → Heal → Truth</h2>
           <p class="sub">
-            This is the philosophy behind Knowledge. Not a slogan. A standard.
+            This is not a slogan. It is the direction of the system.
           </p>
         </div>
 
@@ -766,14 +1191,17 @@
                 <div class="point-mark"></div>
                 <div>Knowledge is for people who want to think deeper.</div>
               </div>
+
               <div class="point">
                 <div class="point-mark"></div>
                 <div>Ideas should be explored, not rushed past.</div>
               </div>
+
               <div class="point">
                 <div class="point-mark"></div>
                 <div>Application matters more than reaction.</div>
               </div>
+
               <div class="point">
                 <div class="point-mark"></div>
                 <div>What lasts is what works in real life.</div>
@@ -784,28 +1212,144 @@
       </div>
     </section>
 
+    <!-- WHO IT IS FOR -->
+    <section class="section" id="who">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Who it is for</div>
+          <h2>Knowledge is for the underfed mind.</h2>
+          <p class="sub">
+            For people who do not just want more information.
+            They want clarity, reflection, action, healing, and truth.
+          </p>
+        </div>
+
+        <div class="audience-grid">
+          <div class="card audience-card">
+            <h3>The signal-checker</h3>
+            <p>Feels when something is off and wants truth before adoption.</p>
+          </div>
+
+          <div class="card audience-card">
+            <h3>The reflective grower</h3>
+            <p>Wants to understand themselves and track real inner progress.</p>
+          </div>
+
+          <div class="card audience-card">
+            <h3>The action-seeker</h3>
+            <p>Wants something applicable, not just inspiration.</p>
+          </div>
+
+          <div class="card audience-card">
+            <h3>The proof-hungry user</h3>
+            <p>Needs to see that growth or learning became real.</p>
+          </div>
+
+          <div class="card audience-card">
+            <h3>The underfed mind</h3>
+            <p>Feels most environments are too shallow for how they think.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF -->
+    <section class="section" id="proof">
+      <div class="container demo-grid">
+        <div class="card proof-card">
+          <div class="kicker">Product proof</div>
+          <h2>See the system in motion.</h2>
+          <p class="sub">
+            A thought enters. You do not just consume it.
+            You return to it, mirror it, apply it, and verify what changed.
+          </p>
+
+          <div class="stack" style="margin-top: 22px;">
+            <a
+              class="item"
+              href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <strong>Demo</strong>
+              Watch the product walkthrough.
+            </a>
+
+            <a
+              class="item"
+              href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <strong>Proof Deck</strong>
+              Read the proof deck.
+            </a>
+          </div>
+        </div>
+
+        <div class="visual-proof" aria-label="Knowledge system visual">
+          <div class="orbit one"></div>
+          <div class="orbit two"></div>
+          <div class="shard a">Scroll</div>
+          <div class="shard b">Mirror</div>
+          <div class="shard c">Jewel</div>
+          <div class="shard d">Purple</div>
+          <div class="core-visual">
+            Knowledge<br />
+            Loop
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOIN -->
     <section class="section" id="join">
       <div class="container">
         <div class="section-head">
-          <div class="kicker">Invitation</div>
-          <h2>A different kind of platform</h2>
+          <div class="kicker">Early access</div>
+          <h2>The first circle is forming.</h2>
           <p class="sub">
-            A place for people who want to think, reflect, apply, and see what actually works.
+            Knowledge is opening early access for people aligned with learning,
+            growth, healing, and truth.
           </p>
         </div>
 
         <div class="invite-grid">
           <div class="card">
             <div class="signup-card">
-              <h3 style="font-size:1.4rem; margin-bottom:0;">Join Early Access</h3>
-              <p class="sub" style="font-size:1rem; margin:0; max-width:none;">
-                Join the first group entering Knowledge.
+              <h3 style="font-size: 1.45rem; margin-bottom: 0;">
+                Request early access to Knowledge.
+              </h3>
+
+              <p class="sub" style="font-size: 1rem; max-width: none;">
+                No spam. No noise. Just early access updates and next steps.
               </p>
 
+              <!--
+                FormSubmit setup kept from your old code.
+                This sends signups to founder@knowledge-app.com.
+              -->
               <form class="signup-form" action="https://formsubmit.co/founder@knowledge-app.com" method="POST">
                 <input type="hidden" name="_subject" value="New Knowledge Early Access Signup" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
+
+                <!-- After signup, FormSubmit can redirect here.
+                     Replace with a real thank-you page later if you create one. -->
+                <input type="hidden" name="_next" value="https://knowledge-app.com" />
+
+                <div>
+                  <label class="label" for="name">Name</label>
+                  <input
+                    class="input"
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
 
                 <div>
                   <label class="label" for="email">Email</label>
@@ -815,42 +1359,38 @@
                     type="email"
                     name="email"
                     placeholder="you@example.com"
+                    autocomplete="email"
                     required
                   />
                 </div>
 
-                <button class="btn btn-primary" type="submit">Join Early Access</button>
+                <div>
+                  <label class="label" for="reason">Why do you want early access?</label>
+                  <textarea
+                    class="textarea"
+                    id="reason"
+                    name="reason"
+                    placeholder="Tell us what drew you to Knowledge."
+                  ></textarea>
+                </div>
+
+                <button class="btn btn-primary" type="submit">
+                  Request Early Access →
+                </button>
               </form>
             </div>
           </div>
 
-          <div class="card">
-            <h3 style="font-size:1.4rem;">Proof</h3>
-            <p class="sub" style="font-size:1rem; max-width:none;">
-              If you want to go deeper, start here.
-            </p>
-
-            <div class="stack" style="margin-top:18px;">
-              <a
-                class="item"
-                href="https://www.loom.com/share/3e427a0cc7974e1d906d68d8998ca8bc"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <strong>Demo</strong>
-                Watch the product walkthrough
-              </a>
-
-              <a
-                class="item"
-                href="https://app.pitch.com/app/reader/384d0566-67db-4576-9641-7cb376e64971/ff797d45-f6de-437c-900f-ec6bd69bc5dd"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <strong>Deck</strong>
-                Read the proof deck
-              </a>
+          <div class="card quote">
+            <div class="bar"></div>
+            <div class="quote-text">
+              <strong>Request access if you want to be part of the first group helping shape the standard after attention.</strong>
             </div>
+
+            <p class="sub" style="max-width: none;">
+              Built for serious thinkers, reflective learners, truth-seekers,
+              and people who know there has to be something deeper than noise.
+            </p>
           </div>
         </div>
       </div>
@@ -860,7 +1400,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div>© <span id="year"></span> Knowledge. The Place To Think.</div>
-      <div></div>
+      <div>Learn → Grow → Heal → Truth</div>
     </div>
   </footer>
 
